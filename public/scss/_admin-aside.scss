@@ -1,0 +1,76 @@
+.admin__aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 265px;
+  background: $gradientBlue;
+  min-height: 100vh;
+  padding: 10px 20px;
+
+  .aside__header {
+      @include flex(null,center,null,10px);
+      margin-bottom: 45px;
+      position: relative;
+      .aside__logo {
+          background-color: $black;
+          height: 45px;
+          width:45px;
+          border-radius: 15px;
+          opacity: 0.9;
+          @include flex(null,center,center);
+
+          img {
+              width:28px;
+          }
+      }
+      .aside__title {
+          p {
+              @include text(12px,400,$gray)
+          }
+          h3 {
+              @include text(19px, 400,$white)
+          }
+      }
+  }
+
+  ul {
+    @include flex(column, flex-start, null, 24px);
+
+    a {
+      display: flex;
+      align-items: center;
+      @include text(14px, 400, $gray, null);
+
+      i {
+        font-size: 18px;
+        margin-right: 9px;
+      }
+    }
+
+    a:last-child {
+      position: absolute;
+      bottom: 25px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .admin__aside {
+    width: 60px;
+    padding-top: 30px;
+
+    a > p {
+      display: none !important;
+    }
+
+    .aside__title {
+        display: none;
+    }
+    .aside__logo {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+  }
+}
