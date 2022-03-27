@@ -1,0 +1,24 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Edit Category</h2>
+
+    <div>
+        <form action="/admin/categories/<%=category._id%>/edit" method="post">
+
+            <input type="text" placeholder="Name" name="name" value="<%=category.name%>">
+            <input type="text" placeholder="slug" name="slug" value="<%=category.slug%>">
+
+            <button type="submit">Edit</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %>

@@ -1,0 +1,30 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Create Category</h2>
+
+    <div>
+        <form action="/admin/categories/create" method="post">
+
+            <% logs.forEach(function(log) { %>
+                <div>
+                    <%= log %>
+                </div>
+            <% }) %>
+
+            <input type="text" placeholder="Name" name="name">
+            <input type="text" placeholder="slug" name="slug">
+
+            <button type="submit">Create</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %>

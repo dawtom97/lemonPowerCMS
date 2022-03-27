@@ -1,0 +1,40 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Categories</h2>
+
+    <div>
+        <form action="/admin/categories/create" method="get">
+            <button type="submit">Add</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach(function(category) { %>
+                    <tr>
+                        <td><%= category.name %></td>
+                        <td><%= category.slug %></td>
+                        <td>
+                            <a href="/admin/categories/<%=category._id%>/edit">Edit</a>
+                            <a href="/admin/categories/<%=category._id%>/delete">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %>
