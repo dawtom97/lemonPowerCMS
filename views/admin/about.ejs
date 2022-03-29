@@ -1,0 +1,33 @@
+<%- include('./partials/adminHeader'); %>
+
+
+    <div class="admin__dashboard">
+        <%- include('./partials/adminAside'); %>
+
+            <h2>About</h2>
+
+            <div>
+                <form action="/admin/about" method="post" > 
+                    <div>
+                        <input  name="heading" type="text" value="<%=about.heading%>">
+                    </div>
+
+                    <div>
+                        <input type="text" name="shortDesc" value="<%=about.shortDesc%>">
+                    </div>
+
+                    <div>
+                        <textarea name="editor" id="editor" cols="30" rows="10">
+                           <%=about.editor%>
+                      </textarea>
+                    </div>
+
+                    <button type="submit">Save Changes</button>
+
+                </form>
+            </div>
+    </div>
+
+
+
+    <%- include('./partials/adminFooter'); %>

@@ -1,0 +1,29 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Add service</h2>
+
+    <div>
+        <form action="/admin/services/create" method="post">
+
+            <select name="categoryId" id="">
+                <% categories.forEach((category)=>{ %>
+                    <option value="<%=category._id%>"><%=category.name %></option>
+                <% }) %>
+            </select>
+
+            <input name="name" type="text" placeholder="Title">
+
+            <button type="submit">Add new service</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

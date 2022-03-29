@@ -1,0 +1,33 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Change cover image</h2>
+
+    <div>
+     
+        <form action="/admin/posts/<%=post._id%>/edit-cover" method="post" enctype="multipart/form-data">
+
+            <label for="">Cover</label>
+            <input type="file" name="cover">
+
+            <div>
+                <label for="">Images of the work</label>
+                <input name="images" type="file" multiple>
+            </div>
+
+            <br>
+
+
+
+            <button type="submit">Aktualizuj</button>
+        </form>
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

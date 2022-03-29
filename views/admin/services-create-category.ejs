@@ -1,0 +1,24 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Create Service Category</h2>
+
+    <div>
+        <form action="/admin/services/create/category" method="post">
+
+
+
+            <input type="text" placeholder="Name" name="name">
+            <button type="submit">Create</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %>

@@ -1,0 +1,44 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Add new post</h2>
+
+    <div>
+        <form action="/admin/posts/create" method="post" enctype="multipart/form-data">
+
+            <select name="categoryId" id="">
+                <% categories.forEach((category)=>{ %>
+                    <option value="<%=category._id%>"><%=category.name %></option>
+                <% }) %>
+            </select>
+
+            <input name="title" type="text" placeholder="Name">
+
+            <div>
+                <label for="">Cover</label>
+                <input name="cover" type="file">
+            </div>
+            <div>
+                <label for="">Images of the work</label>
+                <input name="images" type="file" multiple>
+            </div>
+
+            <div>
+                <textarea name="editor" id="editor" cols="30" rows="10">
+
+                </textarea>
+            </div>
+
+            <button type="submit">Add new post</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

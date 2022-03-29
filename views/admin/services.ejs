@@ -1,0 +1,52 @@
+<%- include('./partials/adminHeader'); %>
+
+
+    <div class="admin__dashboard">
+        <%- include('./partials/adminAside'); %>
+
+            <h2>Services</h2>
+
+            <div>
+                <form action="/admin/services/create/category" method="get">
+                    <button type="submit">Add Category</button>
+                </form>
+                <form action="/admin/services/create" method="get">
+                    <button type="submit">Add</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% services.forEach((service)=>{ %>
+
+                            <tr>
+                                <td>
+                                    <% service.service.forEach((serv)=>{ %>
+                                         <%=serv.name %>
+                                    <% }) %>
+                                    
+                                </td>
+                                <td><%=service.name%></td>
+
+                                <td>
+                                    <a href="/admin/services/<%=service._id%>/delete">Delete service</a>
+                                </td>
+                            </tr>
+
+                            <% }) %>
+
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+
+
+    <%- include('./partials/adminFooter'); %>

@@ -1,0 +1,39 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="admin__dashboard">
+    <%- include('./partials/adminAside'); %>
+
+    <h2>Blog Area Edit</h2>
+
+    <div>
+        <form action="/admin/blog/<%=blog._id%>/edit" method="post">
+
+            <select name="categoryId" id="">
+                <% categories.forEach((category)=>{ %>
+                    <option value="<%=category._id%>"><%=category.name %></option>
+                <% }) %>
+            </select>
+
+            <input name="title" type="text" placeholder="Name" value="<%=blog.title%>">
+
+            <div>
+                <textarea name="editor" id="editor" cols="30" rows="10">
+                    <%=blog.editor%>
+                </textarea>
+            </div>
+
+            <div>
+                <input name="tags" type="text" placeholder="add tags" value="<%=blog.tags%>">
+            </div>
+
+            <button type="submit">Update blog</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

@@ -4,9 +4,12 @@ const ejs = require('ejs');
 const router = require('./routers/router.js');
 const flash = require('connect-flash');
 
+
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
+
+
 
 const sessionOptions = session({
     secret: "learn js from scratch",
