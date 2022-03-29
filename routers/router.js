@@ -9,7 +9,6 @@ const {
   isAuthenticated,
   isUserCheck,
   isAlreadyAuth,
-  tasksPanel,
   categories,
   categoriesCreate,
   categoriesCreatePost,
@@ -40,6 +39,8 @@ const {
   blogEditCoverPost,
   blogEdit,
   blogEditPost,
+  servicesEdit,
+  servicesEditPost,
 } = require("../controllers/adminController");
 const {
   index,
@@ -59,6 +60,7 @@ const storage = multer.diskStorage({
     cb(null, file.fieldname + "-" + uniqueSuffix);
   },
 });
+const {settingsPanel, settingsPost} = require('../controllers/settings/settingsController')
 
 //User controller router
 
@@ -126,6 +128,8 @@ router.post("/admin/services/create/category", isAuthenticated, servicesCreateCa
 router.get("/admin/services/create", isAuthenticated, servicesCreate)
 router.post("/admin/services/create", isAuthenticated, servicesCreatePost)
 router.get("/admin/services/:id/delete", isAuthenticated, servicesDelete)
+router.get("/admin/services/:id/edit", isAuthenticated, servicesEdit)
+router.post("/admin/services/:id/edit", isAuthenticated, servicesEditPost)
 
 
 router.get('/admin/blog', isAuthenticated, blogPanel)
@@ -139,5 +143,10 @@ router.post("/admin/blog/:id/blog-edit-cover", isAuthenticated, upload.single("c
 
 router.get("/admin/blog/:id/edit", isAuthenticated, blogEdit)
 router.post("/admin/blog/:id/edit", isAuthenticated, blogEditPost)
+
+
+// settings routes
+router.get("/admin/settings", isAuthenticated, settingsPanel)
+router.post("/admin/settings", isAuthenticated, upload.single('logo') ,settingsPost)
 
 module.exports = router;

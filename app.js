@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
+const req = require('express/lib/request');
 
 
 
@@ -27,7 +28,16 @@ app.use(sessionOptions);
 app.use(cookieParser());
 app.use(flash());
 
+
+// user info in the dashboard
+app.use((req,res,next)=>{
+  res.locals.user = req.session.user;
+  console.log(req.session)
+  next()
+})
+
 app.use(express.static('public'))
+app.use(express.static('uploads'))
 
 app.set('view engine', 'ejs');
 app.set("views", "views");
@@ -38,6 +48,7 @@ app.use(express.json())
 
 // na koncu niech bedzie
 app.use('/', router);
+
 
 
 module.exports = app;

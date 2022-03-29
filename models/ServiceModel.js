@@ -6,8 +6,9 @@ const serviceCollection = require("../db").db().collection("services");
 const ObjectId = require("mongodb").ObjectID;
 
 class ServiceModel {
-  constructor(service) {
+  constructor(service,id) {
     this.service = service;
+    this.id = id;
   }
   create() {
     return new Promise(async (resolve, reject) => {
@@ -27,6 +28,15 @@ class ServiceModel {
       await serviceCollection.insertOne(this.service);
       resolve();
     });
+  }
+  editService() {
+    return new Promise(async (resolve,reject) => {
+      await serviceCollection.updateOne({_id: ObjectId(this.id)}, {$set: {
+        categoryId: ObjectId(this.service.categoryId),
+        name: this.service.name,
+      }})
+      resolve()
+    })
   }
 }
 

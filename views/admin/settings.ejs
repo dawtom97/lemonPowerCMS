@@ -1,0 +1,81 @@
+<%- include('./partials/adminHeader'); %>
+
+
+    <div >
+        <%- include('./partials/adminAside'); %>
+
+            <h2>Settings</h2>
+
+            <div>
+                <form action="/admin/settings" method="post" enctype="multipart/form-data">
+                    <% if(settings && settings.logo) { %>
+                        <div>
+                            <label for="">Logo Image</label>
+                            <img src="/<%=settings.logo.filename%>" alt="<%=settings.logo.filename%>">
+                        </div>
+                        <% } %>
+
+                            <div>
+                                <label for="">Logo</label>
+                                <input name="logo" type="file">
+                            </div>
+
+
+                            <div>
+                                <input type="text" name="instagram" <% if(settings) { %>
+                                value="<%=settings.instagram %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <div>
+                                <input type="text" name="facebook" <% if(settings) { %>
+                                value="<%=settings.facebook %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <div>
+                                <input type="text" name="address1" <% if(settings) { %>
+                                value="<%=settings.address1 %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <div>
+                                <input type="text" name="address2" <% if(settings) { %>
+                                value="<%=settings.address2 %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <div>
+                                <input type="text" name="phone" <% if(settings) { %>
+                                value="<%=settings.phone %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <div>
+                                <input type="text" name="email" <% if(settings) { %>
+                                value="<%=settings.email %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <div>
+                                <input type="text" name="footer" <% if(settings) { %>
+                                value="<%=settings.footer %>"
+                                    <% } %>
+                                        >
+                            </div>
+
+                            <button type="submit">Save Changes</button>
+
+                </form>
+            </div>
+    </div>
+
+
+
+    <%- include('./partials/adminFooter'); %>

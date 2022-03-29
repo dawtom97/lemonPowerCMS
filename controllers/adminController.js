@@ -4,6 +4,7 @@ const BlogModel = require("../models/BlogModel");
 const CategoryModel = require("../models/CategoryModel");
 const PostModel = require("../models/PostModel");
 const ServiceModel = require("../models/ServiceModel");
+const SettingsModel = require("../models/SettingsModel");
 const UserModel = require("../models/UserModel");
 const userCollection = require("../db").db().collection("users");
 const categoryCollection = require("../db").db().collection("categories");
@@ -14,6 +15,7 @@ const serviceCategoryCollection = require("../db")
   .collection("services-category");
 const serviceCollection = require("../db").db().collection("services");
 const blogCollection = require("../db").db().collection("blogs");
+const settingsCollection = require("../db").db().collection("settings");
 
 
 module.exports = {
@@ -296,6 +298,22 @@ module.exports = {
     await serviceCollection.deleteOne({_id: ObjectId(req.params.id)})
     res.redirect("/admin/services")
   },
+  servicesEdit: async (req,res) => {
+    res.render('admin/services-edit', {
+      categories: await serviceCategoryCollection.find().toArray(),
+      service: await serviceCollection.findOne({_id: ObjectId(req.params.id)})
+    })
+  },
+  servicesEditPost: (req,res) => {
+    const service = new ServiceModel(req.body, req.params.id) 
+    service.editService().then(async() => {
+      res.redirect("/admin/services")
+    })
+    .catch(()=>{
+      res.send('404')
+    })
+  },
+
 
   // BLOG
   blogPanel: async (req,res) => {
@@ -361,6 +379,5 @@ module.exports = {
      .catch(()=>{
        res.send('404')
      })
-  }
-  
+  },
 };
