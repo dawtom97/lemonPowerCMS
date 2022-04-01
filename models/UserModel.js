@@ -12,6 +12,8 @@ class UserModel {
     return new Promise(async (resolve, reject) => {
       this.data = {
         email: this.data.email,
+        firstname: this.data.firstname,
+        lastname: this.data.lastname,
         password: this.data.password,
       };
       const getUser = await userCollection.findOne();

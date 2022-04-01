@@ -1,21 +1,37 @@
 <%- include('./partials/adminHeader'); %>
 
 
-<div >
+<div class="addContent__wrapper">
     <%- include('./partials/adminAside'); %>
 
-    <h2>Blog Area Edit</h2>
+    <h3>Blog Edit</h3>
 
     <div>
         <form action="/admin/blog/<%=blog._id%>/edit" method="post">
 
-            <select name="categoryId" id="">
-                <% categories.forEach((category)=>{ %>
-                    <option value="<%=category._id%>"><%=category.name %></option>
-                <% }) %>
-            </select>
+            <div>
+                <label for="category">Category</label>
+                <br>
+                <select name="categoryId" id="">
+                    <% categories.forEach((category)=>{ %>
+                        <option value="<%=category._id%>"><%=category.name %></option>
+                    <% }) %>
+                </select>
+            </div>
 
-            <input name="title" type="text" placeholder="Name" value="<%=blog.title%>">
+            <div>
+                <label for="">Title</label>
+                <input name="title" type="text" placeholder="Blog title" value="<%=blog.title%>">
+                <br>
+            </div>
+
+            <div>
+                <label for="">Tags</label>
+                <br>
+                <input name="tags" type="text" placeholder="Add tags" value="<%=blog.tags%>">
+            </div>
+
+
 
             <div>
                 <textarea name="editor" id="editor" cols="30" rows="10">
@@ -23,11 +39,7 @@
                 </textarea>
             </div>
 
-            <div>
-                <input name="tags" type="text" placeholder="add tags" value="<%=blog.tags%>">
-            </div>
-
-            <button type="submit">Update blog</button>
+            <button class="saveBtn" type="submit">Update blog</button>
         </form>
 
      

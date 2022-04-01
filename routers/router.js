@@ -1,53 +1,4 @@
 const express = require("express");
-const {
-  register,
-  login,
-  dashboard,
-  createUser,
-  retrieveUser,
-  logout,
-  isAuthenticated,
-  isUserCheck,
-  isAlreadyAuth,
-  categories,
-  categoriesCreate,
-  categoriesCreatePost,
-  categoriesEdit,
-  categoriesPostEdit,
-  categoriesDelete,
-  posts,
-  postsCreate,
-  postsCreatePost,
-  postsEdit,
-  postsEditPost,
-  postsEditCover,
-  postsEditCoverPost,
-  postsDelete,
-  aboutPanel,
-  aboutPanelPost,
-  servicesPanel,
-  servicesCreateCategory,
-  servicesCreateCategoryPost,
-  servicesCreate,
-  servicesCreatePost,
-  servicesDelete,
-  blogPanel,
-  blogCreate,
-  blogCreatePost,
-  blogDelete,
-  blogEditCover,
-  blogEditCoverPost,
-  blogEdit,
-  blogEditPost,
-  servicesEdit,
-  servicesEditPost,
-} = require("../controllers/adminController");
-const {
-  index,
-  blog,
-  about,
-  contact,
-} = require("../controllers/userController");
 const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
@@ -60,18 +11,87 @@ const storage = multer.diskStorage({
     cb(null, file.fieldname + "-" + uniqueSuffix);
   },
 });
-const {settingsPanel, settingsPost} = require('../controllers/settings/settingsController')
+const {
+  settingsPanel,
+  settingsPost,
+} = require("../controllers/settings/settingsController");
+const {
+  blogPanel,
+  blogCreate,
+  blogCreatePost,
+  blogDelete,
+  blogEditCover,
+  blogEditCoverPost,
+  blogEdit,
+  blogEditPost,
+} = require("../controllers/blog/blogController");
+const {
+  servicesPanel,
+  servicesCreateCategory,
+  servicesCreateCategoryPost,
+  servicesCreate,
+  servicesCreatePost,
+  servicesDelete,
+  servicesEdit,
+  servicesEditPost,
+} = require("../controllers/services/servicesController");
+const {
+  posts,
+  postsCreate,
+  postsCreatePost,
+  postsEdit,
+  postsEditPost,
+  postsEditCover,
+  postsEditCoverPost,
+  postsDelete,
+} = require("../controllers/posts/postsController");
+
+const {
+  register,
+  login,
+  dashboard,
+  createUser,
+  retrieveUser,
+  logout,
+  isAuthenticated,
+  isUserCheck,
+  isAlreadyAuth,
+  getBreadcrumbs,
+} = require("../controllers/user/userController");
+
+const {
+  categories,
+  categoriesCreate,
+  categoriesCreatePost,
+  categoriesEdit,
+  categoriesPostEdit,
+  categoriesDelete,
+} = require("../controllers/category/categoryController");
+
+const {
+  aboutPanel,
+  aboutPanelPost,
+} = require("../controllers/about/aboutController");
+const {
+  index,
+  blog,
+  about,
+  contact,
+  getContact,
+} = require("../controllers/userController");
 
 //User controller router
 
 router.get("/", index);
 router.get("/blog", blog);
 router.get("/about", about);
-router.get("/contact", contact);
+
+router.get("/contact", getContact);
+router.post("/contact", contact);
 
 // admin controller router
 
-router.get("/admin", isAuthenticated, dashboard);
+router.get("/admin", isAuthenticated,getBreadcrumbs, dashboard);
 
 router.get("/admin/register", isUserCheck, register);
 router.post("/admin/register", isUserCheck, createUser);
@@ -82,16 +102,16 @@ router.post("/admin/login", retrieveUser);
 router.post("/admin/logout", logout);
 
 // categories routes
-router.get("/admin/categories", isAuthenticated, categories);
-router.get("/admin/categories/create", isAuthenticated, categoriesCreate);
+router.get("/admin/categories", isAuthenticated,getBreadcrumbs, categories);
+router.get("/admin/categories/create", isAuthenticated,getBreadcrumbs, categoriesCreate);
 router.post("/admin/categories/create", isAuthenticated, categoriesCreatePost);
-router.get("/admin/categories/:id/edit", isAuthenticated, categoriesEdit);
+router.get("/admin/categories/:id/edit", isAuthenticated,getBreadcrumbs, categoriesEdit);
 router.post("/admin/categories/:id/edit", isAuthenticated, categoriesPostEdit);
 router.get("/admin/categories/:id/delete", isAuthenticated, categoriesDelete);
 
 // posts routes
-router.get("/admin/posts", isAuthenticated, posts);
-router.get("/admin/posts/create", isAuthenticated, postsCreate);
+router.get("/admin/posts", isAuthenticated,getBreadcrumbs, posts);
+router.get("/admin/posts/create", isAuthenticated,getBreadcrumbs, postsCreate);
 router.post(
   "/admin/posts/create",
   isAuthenticated,
@@ -102,10 +122,10 @@ router.post(
   postsCreatePost
 );
 
-router.get("/admin/posts/:id/edit", isAuthenticated, postsEdit);
+router.get("/admin/posts/:id/edit", isAuthenticated,getBreadcrumbs, postsEdit);
 router.post("/admin/posts/:id/edit", isAuthenticated, postsEditPost);
 
-router.get("/admin/posts/:id/edit-cover", isAuthenticated, postsEditCover);
+router.get("/admin/posts/:id/edit-cover", isAuthenticated,getBreadcrumbs, postsEditCover);
 router.post(
   "/admin/posts/:id/edit-cover",
   isAuthenticated,
@@ -119,34 +139,56 @@ router.post(
 router.get("/admin/posts/:id/delete", isAuthenticated, postsDelete);
 
 // ADMIN PAGES
-router.get("/admin/about", isAuthenticated, aboutPanel);
+router.get("/admin/about", isAuthenticated,getBreadcrumbs, aboutPanel);
 router.post("/admin/about", isAuthenticated, aboutPanelPost);
 
-router.get("/admin/services", isAuthenticated, servicesPanel);
-router.get("/admin/services/create/category", isAuthenticated, servicesCreateCategory)
-router.post("/admin/services/create/category", isAuthenticated, servicesCreateCategoryPost)
-router.get("/admin/services/create", isAuthenticated, servicesCreate)
-router.post("/admin/services/create", isAuthenticated, servicesCreatePost)
-router.get("/admin/services/:id/delete", isAuthenticated, servicesDelete)
-router.get("/admin/services/:id/edit", isAuthenticated, servicesEdit)
-router.post("/admin/services/:id/edit", isAuthenticated, servicesEditPost)
+router.get("/admin/services", isAuthenticated,getBreadcrumbs, servicesPanel);
+router.get(
+  "/admin/services/create/category",
+  isAuthenticated,
+  getBreadcrumbs,
+  servicesCreateCategory
+);
+router.post(
+  "/admin/services/create/category",
+  isAuthenticated,
+  servicesCreateCategoryPost
+);
+router.get("/admin/services/create", isAuthenticated,getBreadcrumbs, servicesCreate);
+router.post("/admin/services/create", isAuthenticated, servicesCreatePost);
+router.get("/admin/services/:id/delete", isAuthenticated, servicesDelete);
+router.get("/admin/services/:id/edit", isAuthenticated,getBreadcrumbs, servicesEdit);
+router.post("/admin/services/:id/edit", isAuthenticated, servicesEditPost);
 
-
-router.get('/admin/blog', isAuthenticated, blogPanel)
-router.get("/admin/blog/create", isAuthenticated, blogCreate)
-router.post("/admin/blog/create", isAuthenticated, upload.single('cover') ,blogCreatePost)
+router.get("/admin/blog", isAuthenticated,getBreadcrumbs, blogPanel);
+router.get("/admin/blog/create", isAuthenticated,getBreadcrumbs, blogCreate);
+router.post(
+  "/admin/blog/create",
+  isAuthenticated,
+  upload.single("cover"),
+  blogCreatePost
+);
 
 router.get("/admin/blog/:id/delete", isAuthenticated, blogDelete);
 
-router.get("/admin/blog/:id/blog-edit-cover", isAuthenticated, blogEditCover);
-router.post("/admin/blog/:id/blog-edit-cover", isAuthenticated, upload.single("cover"), blogEditCoverPost)
+router.get("/admin/blog/:id/blog-edit-cover", isAuthenticated,getBreadcrumbs, blogEditCover);
+router.post(
+  "/admin/blog/:id/blog-edit-cover",
+  isAuthenticated,
+  upload.single("cover"),
+  blogEditCoverPost
+);
 
-router.get("/admin/blog/:id/edit", isAuthenticated, blogEdit)
-router.post("/admin/blog/:id/edit", isAuthenticated, blogEditPost)
-
+router.get("/admin/blog/:id/edit", isAuthenticated,getBreadcrumbs, blogEdit);
+router.post("/admin/blog/:id/edit", isAuthenticated, blogEditPost);
 
 // settings routes
-router.get("/admin/settings", isAuthenticated, settingsPanel)
-router.post("/admin/settings", isAuthenticated, upload.single('logo') ,settingsPost)
+router.get("/admin/settings", isAuthenticated,getBreadcrumbs, settingsPanel);
+router.post(
+  "/admin/settings",
+  isAuthenticated,
+  upload.single("logo"),
+  settingsPost
+);
 
 module.exports = router;

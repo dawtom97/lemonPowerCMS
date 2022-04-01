@@ -3,149 +3,28 @@
                 <!-- Container -->
                     <main class="ms-container">
 
+                        <h1><%=about.heading%></h1>
+                        <p><%=about.shortDesc%></p>
+
                         <%- include ('./partials/container') %> 
 
-                        <!-- About Content -->
-                            <div class="ms-section">
+                        <div class="content">
+                            <%-about.editor%>
+                        </div>
 
-                                <div class="ms-section__block about__content">
-                                    <img src="assets/images/blog/pl-wide.jpg" alt="img">
-                                    <p>Nulla sed mi leo, sit amet molestie nulla. Phasellus lobortis blandit ipsum, at adipiscing eros porta quis. Phasellus in nisi ipsum, quis dapibus magna. Phasellus odio dolor, pretium sit amet aliquam a, gravida eget dui. Pellentesque eu ipsum et quam faucibus scelerisque vitae ut ligula. Ut luctus fermentum commodo. Mauris eget justo turpis, eget fringilla mi. Duis lobortis cursus mi vel <a href="#">tristique</a>. Maecenas eu lorem hendrerit neque dapibus cursus id sit amet nisi. Proin rhoncus semper sem nec aliquet.</p>
-                                    <p>Conveniently pontificate extensive platforms rather than user friendly ROI. Competently underwhelm seamless users through accurate data. Appropriately engineer extensive markets with corporate expertise. Globally implement performance based e-markets rather than cooperative schemas. Uniquely impact world-class imperatives through functionalized outsourcing.</p>
-                                </div>
-                                <div class="ms-section__block">
-                                    <header>
-                                        <h3>Services</h3>
-                                        <p>Globally implement performance based e-markets.</p>
-                                    </header>
-                                    <div class="services-list row">
-                                        <ul class="col-md-3">
-                                            <li><h6>Web design</h6></li>
-                                            <li>User experience</li>
-                                            <li>Page layout</li>
-                                            <li>Typography</li>
-                                            <li>Icons</li>
-                                        </ul>
-                                        <ul class="col-md-3">
-                                            <li><h6>Web development</h6></li>
-                                            <li>HTML5</li>
-                                            <li>Javascript</li>
-                                            <li>CSS</li>
-                                            <li>WebGL</li>
-                                        </ul>
-                                        <ul class="col-md-3">
-                                            <li><h6>Digital marketing</h6></li>
-                                            <li>Social media</li>
-                                            <li>Search engine</li>
-                                            <li>Analytics</li>
-                                            <li>Automation</li>
-                                            <li>Ecommerce</li>
-                                        </ul>
-                                        <ul class="col-md-3">
-                                            <li><h6>Visual communication</h6></li>
-                                            <li>Art direction</li>
-                                            <li>Graphic design</li>
-                                            <li>llustration</li>
-                                            <li>Branding</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="contrast-bg__grey">
-                                    <div class="ms-section__block">
-                                        <header>
-                                            <h3>Our clients</h3>
-                                            <p>Globally implement performance based e-markets.</p>
-                                        </header>
-                                        <ul class="ms-clients__grid row">
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6">
-                                                <div class="client-logo">
-                                                    <img src="assets/images/clients/c3.png" alt="client-logo">
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="ms-section__block">
-                                    <header>
-                                        <h3>Testimonials from our customers</h3>
-                                    </header>
-                                    <div class="ms-testimonials__list swiper-container">
-                                        <ul class="swiper-wrapper">
-                                            <li class="testimonial-item swiper-slide">
-                                                <p>"I STRONGLY recommend design to EVERYONE interested in running a successful online business! Design is both attractive and highly adaptable. Thank You!"</p>
-                                                <span class="testimonial-author">- Benjie U.</span>
-                                            </li>
-                                            <li class="testimonial-item swiper-slide">
-                                                <p>"I just can't get enough of design. I want to get a T-Shirt with design on it so I can show it off to everyone. I am so pleased with this product. Dude, your stuff is the bomb!"</p>
-                                                <span class="testimonial-author">- Harold W.</span>
-                                            </li>
-                                            <li class="testimonial-item swiper-slide">
-                                                <p>"I would gladly pay over 600 dollars for design. This is simply unbelievable!"</p>
-                                                <span class="testimonial-author">- Cornelle Y.</span>
-                                            </li>
-                                        </ul>
-                                        <ul class="ms-pagination">
-                                            <li class="slider-prev">
-                                                <span class="ms-btn__icon">
-                                                    <i class="material-icons">keyboard_arrow_left</i>
-                                                </span>
-                                            </li>
-                                            <li class="slider-pagination"></li>
-                                            <li class="slider-next">
-                                                <span class="ms-btn__icon">
-                                                    <i class="material-icons">keyboard_arrow_right</i>
-                                                </span>
-                                            </li>
-                                        </ul>                                      
-                                    </div>
-                                </div>
-                                <div class="contrast-bg__black">
-                                    <div class="ms-section__block go-to-contacts">
-                                        <header>
-                                            <h3>We are here to help you!</h3>
-                                            <p>Quickly unleash ubiquitous networks whereas unique content. Conveniently pontificate B2C web services whereas reliable testing procedures.</p>
-                                            <br>
-                                            <a href="contact.html" class="ms-btn__square" data-type="page-transition">Get in touch</a>
-                                        </header>
-                                    </div>
-                                </div>
-                            </div>
-                        <!-- /About Content -->
+                        <div class="offers">
+                            <% categories.forEach((category) => { %>
+                                <ul>
+                                    <li>
+                                        <h5><%=category.name%></h5>
+                                    </li>
+                                    <% category.services.forEach((service) => { %>
+                                        <li><%=service.name%> </li>
+                                    <% })%>
+                                </ul>
+                            <% }) %>
+                        </div>
+
 
                         <!-- Back to top button -->
                         <a href="#" class="back-top"><i class="material-icons">arrow_upward</i></a>

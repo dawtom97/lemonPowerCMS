@@ -4,34 +4,43 @@
 <div >
     <%- include('./partials/adminAside'); %>
 
-    <h2>Blog Area</h2>
-
-    <div>
+    <div class="addContent__wrapper">
+        <h3>Create New Blog</h3>
         <form action="/admin/blog/create" method="post" enctype="multipart/form-data">
 
-            <select name="categoryId" id="">
-                <% categories.forEach((category)=>{ %>
-                    <option value="<%=category._id%>"><%=category.name %></option>
-                <% }) %>
-            </select>
-
-            <input name="title" type="text" placeholder="Name">
-
             <div>
-                <label for="">Cover</label>
-                <input name="cover" type="file">
-            </div>
-            <div>
-                <input name="tags" type="text" placeholder="add tags">
+                <label for="category">Category</label>
+                <br>
+                <select name="categoryId" id="category">
+                    <% categories.forEach((category)=>{ %>
+                        <option value="<%=category._id%>"><%=category.name %></option>
+                    <% }) %>
+                </select>
             </div>
 
             <div>
-                <textarea name="editor" id="editor" cols="30" rows="10">
+                <label for="title">Title</label>
+                <br>
+                <input name="title" type="text" placeholder="Blog Title" id="title">
+            </div>
+            <div>
+                <label for="tags">Tags</label>
+                <br>
+                <input name="tags" type="text" placeholder="Add tags">
+            </div>
+
+            
+            <div>
+                <input name="cover" type="file" id="cover">
+            </div>
+
+            <div>
+                <textarea name="editor" id="editor" cols="50" rows="20">
 
                 </textarea>
             </div>
 
-            <button type="submit">Add new post</button>
+            <button class="saveBtn" type="submit">Save Blog</button>
         </form>
 
      

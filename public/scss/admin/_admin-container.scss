@@ -1,0 +1,11 @@
+.admin__dashboard {
+    margin-left: 305px;
+    margin-right: 28px;
+}
+
+@media(max-width:768px) {
+    .admin__dashboard {
+        margin-left: 72px;
+        margin-right: 5px;
+    }
+}

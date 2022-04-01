@@ -3,8 +3,168 @@
 
     <%- include('./partials/adminAside'); %>
 
-</div>
+
+        <div class="contentCounter__wrapper">
+            <div class="contentCounter__box">
+                <div class="boxIcon">
+                    <i class="bi bi-stickies-fill"></i>
+                </div>
+                <div class="boxText">
+                    <h5>Total posts</h5>
+                    <p>#<%=posts.length%>
+                    </p>
+                </div>
+
+                <p class="latest">Latest: <%=latestPosts[0].createDate.slice(4)%>
+                </p>
+
+
+            </div>
+
+            <div class="contentCounter__box">
+                <div class="boxIcon">
+                    <i class="bi bi-box2-fill"></i>
+                </div>
+                <div class="boxText">
+                    <h5>Total blogs</h5>
+                    <p>#<%=blogs.length%>
+                    </p>
+                </div>
+
+                <p class="latest">Latest: <%=latestBlogs[0].createDate.slice(4)%>
+                </p>
+
+            </div>
+
+            <div class="contentCounter__box">
+                <div class="boxIcon">
+                    <i class="bi bi-tags-fill"></i>
+                </div>
+                <div class="boxText">
+                    <h5>Categories</h5>
+                    <p>#<%=categories.length%>
+                    </p>
+                </div>
+
+                <p class="latest">Latest: <%=lastCategory[0].name%>
+                </p>
+
+
+            </div>
+
+            <div class="contentCounter__box">
+                <div class="boxIcon">
+                    <i class="bi bi-server"></i>
+                </div>
+                <div class="boxText">
+                    <h5>Services</h5>
+                    <p>#<%=services.length%>
+                    </p>
+                </div>
+
+                <p class="latest">Latest: <%=lastService[0].name%>
+                </p>
+
+            </div>
+            <div class="contentCounter__box">
+                <div class="boxIcon">
+                    <i class="bi bi-chat-dots-fill"></i>
+                </div>
+                <div class="boxText">
+                    <h5>Messages</h5>
+                    <p>#7
+                    </p>
+                </div>
+
+                <p class="latest">Latest from: John@wp.pl
+                </p>
+
+            </div>
+        </div>
+
+        <div class="latestContent">
+            <div class="latestBlogs__wrapper">
+                <h3>Latest blog's</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% latestBlogs.forEach(blog=> { %>
+                            <tr class="card">
+                                <td>
+                                    <% if (blog.cover) { %>
+                                        <img src="/<%=blog.cover.filename%>" alt="" width="50px" height="50px">
+                                        <% } %>
+                                </td>
+                                <td>
+                                    <a class="title" href="/blog/<%=blog._id%>">
+                                        <%=blog.title%>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%=blog.createDate.slice(4,16)%>
+                                </td>
+                                <td>
+                                    <a class="editBtn" href="/admin/blog/<%=blog._id%>/edit">Edit</a>
+                                </td>
+
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="latestPosts__wrapper">
+                <h3>Latest post's</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% latestPosts.forEach(post=> { %>
+                            <tr class="card">
+                                <td>
+                                    <% if (post.images.cover) { %>
+                                        <img class="altImg" src="/<%=post.images.cover[0].filename%>" alt="" width="50px" height="50px">
+                                        <% } %>
+                                </td>
+                                <td>
+                                    <a class="title" href="/blog/<%=post._id%>">
+                                        <%=post.title%>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%=post.createDate.slice(4,16)%>
+                                </td>
+                                <td>
+                                    <a class="editBtn altBtn" href="/admin/posts/<%=post._id%>/edit">Edit</a>
+                                </td>
+
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
 
 
 
-<%- include('./partials/adminFooter'); %>
+
+
+
+        </div>
+
+
+
+        <%- include('./partials/adminFooter'); %>

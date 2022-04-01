@@ -5,97 +5,26 @@
 
                         <%- include ('./partials/container') %> 
 
-                        <!-- /Works Grid -->
-                            <section class="ms-section">
-
-                                <div class="ms-section__block ms-grid">
-                                <div class="col-md-1 col-xs-12 grid-sizer"></div>
-
-                                    <!-- Post Item -->
-                                        <div class="grid-item anime-item artcile-item col-md-12 col-xs-12">
-                                            <a href="post-single-page.html" class="box artcile-image" data-type="page-transition">
-                                                <div class="box-cover">
-                                                    <div class="box-img" style="background-image: url(assets/images/blog/pl-wide.jpg)"></div>
-                                                    <div class="box-overlay"></div>
-                                                </div>
-                                            </a>
-                                            <div class="article-content">
-                                                <div class="box-inner">
-                                                    <span class="box-inner__cat">category</span>
-                                                    <h4 class="box-inner__title">Title</h4>
-                                                </div>
-                                                <div class="article-date">
-                                                    <time datetime="2018-03-06 19:00">6/03/2018</time>
-                                                </div>
+                        <div class="post-wrapper">
+                             <% posts.forEach((post) => { %>
+                                <div class="post">
+                                    <a href="/post/<%=post._id%>">
+                                        <article style="width:300px; min-height:200px; background-image:url('<% if(!post.images.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=post.images.cover[0].filename%><%}%>')">
+                                            <div>
+                                                <span>
+                                                    <% post.category.forEach((cat)=> { %>
+                                                           <%=cat.name%>
+                                                    <% }) %>
+                                                </span>
+                                                <h4><%=post.title%></h4>
                                             </div>
-                                            <a href="#" class="box-inner_link">read<i class="material-icons">keyboard_arrow_right</i></a>
-                                        </div>
-                                    <!-- /Post Item -->
-
-                                    <!-- Post Item -->
-                                        <div class="grid-item anime-item artcile-item col-md-12 col-xs-12">
-                                            <a href="post-single-page.html" class="box artcile-image" data-type="page-transition">
-                                                <div class="box-cover">
-                                                    <div class="box-img" style="background-image: url(assets/images/blog/pl-wide.jpg)"></div>
-                                                    <div class="box-overlay"></div>
-                                                </div>
-                                            </a>
-                                            <div class="article-content">
-                                                <div class="box-inner">
-                                                    <span class="box-inner__cat">category</span>
-                                                    <h4 class="box-inner__title">Title</h4>
-                                                </div>
-                                                <div class="article-date">
-                                                    <time datetime="2018-03-06 19:00">6/03/2018</time>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="box-inner_link">read<i class="material-icons">keyboard_arrow_right</i></a>
-                                        </div>
-                                    <!-- /Post Item -->
-
-                                    <!-- Post Item -->
-                                        <div class="grid-item anime-item artcile-item col-md-12 col-xs-12">
-                                            <a href="post-single-page.html" class="box artcile-image" data-type="page-transition">
-                                                <div class="box-cover">
-                                                    <div class="box-img" style="background-image: url(assets/images/blog/pl-wide.jpg)"></div>
-                                                    <div class="box-overlay"></div>
-                                                </div>
-                                            </a>
-                                            <div class="article-content">
-                                                <div class="box-inner">
-                                                    <span class="box-inner__cat">category</span>
-                                                    <h4 class="box-inner__title">Title</h4>
-                                                </div>
-                                                <div class="article-date">
-                                                    <time datetime="2018-03-06 19:00">6/03/2018</time>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="box-inner_link">read<i class="material-icons">keyboard_arrow_right</i></a>
-                                        </div>
-                                    <!-- /Post Item -->
-
-                                    <!-- Post Item -->
-                                        <div class="grid-item anime-item artcile-item col-md-12 col-xs-12">
-                                            <a href="post-single-page.html" class="box artcile-image" data-type="page-transition">
-                                                <div class="box-cover">
-                                                    <div class="box-img" style="background-image: url(assets/images/blog/pl-wide.jpg)"></div>
-                                                    <div class="box-overlay"></div>
-                                                </div>
-                                            </a>
-                                            <div class="article-content">
-                                                <div class="box-inner">
-                                                    <span class="box-inner__cat">category</span>
-                                                    <h4 class="box-inner__title">Title</h4>
-                                                </div>
-                                                <div class="article-date">
-                                                    <time datetime="2018-03-06 19:00">6/03/2018</time>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="box-inner_link">read<i class="material-icons">keyboard_arrow_right</i></a>
-                                        </div>
-                                    <!-- /Post Item -->
-
+            
+                                        </article>
+                                    </a>
                                 </div>
+                             <%})%>
+                        </div>
+                     
 
                                 <!-- Pagination -->
                                     <div class="ms-section__block">

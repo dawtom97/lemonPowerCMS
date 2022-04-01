@@ -30,9 +30,17 @@
                                             </ul>
                                         </div>
                                         <div class="contact-form col-md-8">
+
+                                            <% errors.forEach((err) => {  %>
+                                                <p><%=err %></p>
+                                            <%})%>
+                                            <% errors.forEach((success) => {  %>
+                                                <p><%=success %></p>
+                                            <%})%>
+
                                             <h6>Get in touch</h6>
                                             <br>
-                                            <form id="validForm">
+                                            <form id="validForm" action="/contact" method="post">
                                                 <div class="row">
                                                     <div class="form-group col-md-6">
                                                         <input type="text" name="name" class="form-control" id="cl" placeholder="Your name" autocomplete="off">
@@ -47,9 +55,9 @@
                                                         <textarea name="message" class="form-control" id="message" placeholder="Your message"></textarea>
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <div class="ms-btn__square">
-                                                          <input type="submit" value="Send">
-                                                        </div>
+                                                   
+                                                          <input type="submit">Send</input>
+                                                  
                                                     </div>
                                                 </div>
                                             </form>

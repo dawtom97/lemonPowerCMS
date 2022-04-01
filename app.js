@@ -3,17 +3,15 @@ const app = express();
 const ejs = require('ejs');
 const router = require('./routers/router.js');
 const flash = require('connect-flash');
-
-
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo');
 const req = require('express/lib/request');
-
+const dotenv = require('dotenv').config();
 
 
 const sessionOptions = session({
-    secret: "learn js from scratch",
+    secret: "lorem ipsum dolor sit",
     store: new MongoStore({
         client: require('./db'),
         httpOnly: true
@@ -32,7 +30,6 @@ app.use(flash());
 // user info in the dashboard
 app.use((req,res,next)=>{
   res.locals.user = req.session.user;
-  console.log(req.session)
   next()
 })
 

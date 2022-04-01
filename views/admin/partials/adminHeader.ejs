@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main-admin.css">
     <title>Admin Dashboard</title>
 </head>
+
 <body>
 
     <div class="admin__dashboard">
-    <header>
-        <p><%= user.email %></p>
-    </header>
-    
+        <header class="header">
+            <div class="header__breadcrumb">
+                <% breadcrumbs.forEach((crumb,index,arr)=> { %>
+                    <% if(crumb.breadcrumbName.length < 17){%>
+                        <a href="<%=crumb.breadcrumbUrl%>">
+                            <%=crumb.breadcrumbName%>
+                                <%if(index!==arr.length -1){%>/<%}%>
+                        </a>
+                        <%}%>
+                            <% })%>
+                                <p>
+                                    <%if(breadcrumbs[1]){%>
+                                        <%=breadcrumbs[1].breadcrumbName%>
+                                            <%}%> Panel
+                                </p>
+            </div>
+            <div class="header__info">
+                <div class="infoBox">
+                    <p class="name">
+                        <%=user.firstname%>
+                            <%=user.lastname%>
+                    </p>
+                    <p class="email">
+                        <%= user.email %>
+                    </p>
+                </div>
+
+                <% if(settings && settings.logo) { %>
+                    <img width="50px" src="/<%=settings.logo.filename%>" alt="<%=settings.logo.filename%>">
+                    <% } %>
+                        <a class="settings" href="/admin/settings"><i class="bi bi-gear"></i> </a>
+
+                        <form action="/admin/logout" method="post">
+                            <button class="logout" type="submit"> <i class="bi bi-box-arrow-left"></i></p>
+                        </form>
+
+            </div>
+        </header>

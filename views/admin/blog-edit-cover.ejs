@@ -1,23 +1,19 @@
 <%- include('./partials/adminHeader'); %>
 
 
-<div >
+<div class="addContent__wrapper" >
     <%- include('./partials/adminAside'); %>
 
-    <h2>Change blog cover image</h2>
+    <h3>Change blog cover image</h3>
 
     <div>
      
         <form action="/admin/blog/<%=blog._id%>/blog-edit-cover" method="post" enctype="multipart/form-data">
 
-            <label for="">Cover</label>
             <input type="file" name="cover">
 
-            <br>
-
-
-
-            <button type="submit">Aktualizuj</button>
+            <button class="saveBtn"  type="submit">Update cover</button>
+            
         </form>
      
     </div>
