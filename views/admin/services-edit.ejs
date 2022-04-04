@@ -1,23 +1,32 @@
 <%- include('./partials/adminHeader'); %>
 
 
-<div >
+<div class="addContent__wrapper">
     <%- include('./partials/adminAside'); %>
 
-    <h2>Update service</h2>
+    <h3>Edit service</h3>
 
     <div>
         <form action="/admin/services/<%=service._id%>/edit" method="post">
 
-            <select name="categoryId" id="">
-                <% categories.forEach((category)=>{ %>
-                    <option value="<%=category._id%>"><%=category.name %></option>
-                <% }) %>
-            </select>
+            <div>
+                <label for="">Category</label>
+                <br>
+                <select name="categoryId" id="">
+                    <% categories.forEach((category)=>{ %>
+                        <option value="<%=category._id%>"><%=category.name %></option>
+                    <% }) %>
+                </select>
+            </div>
 
-            <input name="name" type="text" value="<%=service.name%>">
+            <div>
+                <label for="">Name</label>
+                <br>
+                <input name="name" type="text" value="<%=service.name%>">
+            </div>
 
-            <button type="submit">Update service</button>
+
+            <button class="saveBtn" type="submit">Update service</button>
         </form>
 
      

@@ -1,0 +1,103 @@
+<%- include('./partials/adminHeader'); %>
+
+
+    <div class="blogAll__content">
+        <%- include('./partials/adminAside'); %>
+
+            <div class="latestContent">
+                <div class="latestPosts__wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    <tr>
+                                        <td>
+                                            <%=message.name %>
+                                        </td>
+                                        <td>
+                                            <%=message.email %>
+                                        </td>
+                                        <td>
+                                            <%=message.createDate%>
+                                        </td>
+    
+                                    </tr>
+                        </tbody>
+
+                    </table>
+
+
+
+                    
+                </div>
+            </div>
+
+            <div class="latestContent">
+                <div class="latestPosts__wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    <tr>
+                                        <td>
+                                            <%=message.subject %>
+                                        </td> 
+                                    </tr>
+                        </tbody>
+
+                    </table>
+
+                    
+
+                    
+                </div>
+            </div>
+
+            <div class="latestContent">
+                <div class="latestPosts__wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    <tr>
+                                        <td>
+                                            <%=message.message %>
+                                        </td> 
+                                    </tr>
+                        </tbody>
+
+                    </table>
+
+                    
+
+                    
+                </div>
+            </div>
+
+            <div class="latestContent">
+                <div class="latestPosts__wrapper">
+                   <form action="/admin/messages/<%=message._id%>/send" method="post">
+                       <input type="hidden" name="replyEmail" value="<%=message.email%>">
+                       <input required type="text" name="subject" value="Reply: <%=message.subject%>">
+                       <textarea class="mailReply" required name="reply" id="" cols="30" rows="13"></textarea>
+                       <br>
+                       <button class="saveBtn" type="submit">Send Message</button>
+                   </form>          
+                </div>
+            </div>
+
+
+
+
+            <%- include('./partials/adminFooter'); %></div>

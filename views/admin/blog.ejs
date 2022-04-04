@@ -1,59 +1,74 @@
 <%- include('./partials/adminHeader'); %>
 
 
-<div class="blogAll__content">
-    <%- include('./partials/adminAside'); %>
+    <div class="blogAll__content">
+        <%- include('./partials/adminAside'); %>
 
-    <div>
-        <form class="addNewForm" class="addContentForm" action="/admin/blog/create/" method="get">
-            <button class="addNewBtn" type="submit">Add Blog</button>
-        </form>
+            <div>
+                <form class="addNewForm" class="addContentForm" action="/admin/blog/create/" method="get">
+                    <button class="addNewBtn" type="submit">Add Blog</button>
+                </form>
 
+                <% if (blogs.length) { %>
 
-        <div  class="latestContent">
-            <div  class="latestPosts__wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Cover</th>
-                            <th>Category</th>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% blogs.forEach((blog) =>{ %>
-                      
-                            <tr class="card">
-                                <td>
-                                    <% if (blog.cover) { %>
-                                        <img src="/<%=blog.cover.filename%>" alt="" width="50px" height="50px">
-                                        <% } %>
-                                </td>
-                                <td>
-                                    <% blog.category.forEach((cat) =>{%>
-                                         <%=cat.name%>
-                                    <% })%>
-                                </td>
-                                <td><%=blog.title %></td>
-                                <td><%=blog.updateDate %></td>
-                                <td>
-                                    <a class="coverBtn" href="/admin/blog/<%=blog._id%>/blog-edit-cover">Cover</a>
-                                    <a class="editBtn altBtn" href="/admin/blog/<%=blog._id%>/edit">Edit</a>
-                                    <a class="deleteBtn"href="/admin/blog/<%=blog._id%>/delete">Delete</a>
-                                </td>
-                            </tr>
-                       <% })%>
-                   
-                    </tbody>
-                </table>
+                    <div class="latestContent">
+                        <div class="latestPosts__wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Cover</th>
+                                        <th>Category</th>
+                                        <th>Title</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% blogs.forEach((blog)=>{ %>
+
+                                        <tr class="card">
+                                            <td>
+                                                <% if (blog.cover) { %>
+                                                    <img src="/<%=blog.cover.filename%>" alt="" width="50px"
+                                                        height="50px">
+                                                    <% } %>
+                                            </td>
+                                            <td>
+                                                <% blog.category.forEach((cat)=>{%>
+                                                    <%=cat.name%>
+                                                        <% })%>
+                                            </td>
+                                            <td>
+                                                <%=blog.title %>
+                                            </td>
+                                            <td>
+                                                <%=blog.updateDate %>
+                                            </td>
+                                            <td>
+                                                <a class="coverBtn"
+                                                    href="/admin/blog/<%=blog._id%>/blog-edit-cover">Cover</a>
+                                                <a class="editBtn altBtn" href="/admin/blog/<%=blog._id%>/edit">Edit</a>
+                                                <a class="deleteBtn" href="/admin/blog/<%=blog._id%>/delete">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <% })%>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <% } else { %>
+                        <div class="emptyContent">
+                            <h2>Ooops!</h2>
+                            <img src="../../../assets/images/emptyContent.jpg" alt="">
+                            <p>You don't have any blogs...</p>
+                        </div>
+                        <%}%>
+
             </div>
-        </div>
-
     </div>
-</div>
 
 
 
-<%- include('./partials/adminFooter'); %>
+    <%- include('./partials/adminFooter'); %>

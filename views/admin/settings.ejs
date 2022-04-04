@@ -1,17 +1,16 @@
 <%- include('./partials/adminHeader'); %>
 
 
-    <div >
+    <div class="addContent__wrapper">
         <%- include('./partials/adminAside'); %>
 
-            <h2>Settings</h2>
+            <h3>Edit Settings</h3>
 
             <div>
                 <form action="/admin/settings" method="post" enctype="multipart/form-data">
                     <% if(settings && settings.logo) { %>
                         <div>
-                            <label for="">Logo Image</label>
-                            <img src="/<%=settings.logo.filename%>" alt="<%=settings.logo.filename%>">
+                            <img class="settingsPreviewLogo" src="/<%=settings.logo.filename%>" alt="<%=settings.logo.filename%>">
                         </div>
                         <% } %>
 
@@ -22,6 +21,8 @@
 
 
                             <div>
+                                <label for="">Instagram URL</label>
+                                <br>
                                 <input type="text" name="instagram" <% if(settings) { %>
                                 value="<%=settings.instagram %>"
                                     <% } %>
@@ -29,6 +30,8 @@
                             </div>
 
                             <div>
+                                <label for="">Facebook URL</label>
+                                <br>
                                 <input type="text" name="facebook" <% if(settings) { %>
                                 value="<%=settings.facebook %>"
                                     <% } %>
@@ -36,6 +39,8 @@
                             </div>
 
                             <div>
+                                <label for="">Address first line</label>
+                                <br>
                                 <input type="text" name="address1" <% if(settings) { %>
                                 value="<%=settings.address1 %>"
                                     <% } %>
@@ -43,6 +48,8 @@
                             </div>
 
                             <div>
+                                <label for="">Address second line</label>
+                                <br>
                                 <input type="text" name="address2" <% if(settings) { %>
                                 value="<%=settings.address2 %>"
                                     <% } %>
@@ -50,6 +57,8 @@
                             </div>
 
                             <div>
+                                <label for="">Phone</label>
+                                <br>
                                 <input type="text" name="phone" <% if(settings) { %>
                                 value="<%=settings.phone %>"
                                     <% } %>
@@ -57,6 +66,8 @@
                             </div>
 
                             <div>
+                                <label for="">Email</label>
+                                <br>
                                 <input type="text" name="email" <% if(settings) { %>
                                 value="<%=settings.email %>"
                                     <% } %>
@@ -64,13 +75,15 @@
                             </div>
 
                             <div>
+                                <label for="">Copyright</label>
+                                <br>
                                 <input type="text" name="footer" <% if(settings) { %>
                                 value="<%=settings.footer %>"
                                     <% } %>
                                         >
                             </div>
 
-                            <button type="submit">Save Changes</button>
+                            <button class="saveBtn" type="submit">Save Changes</button>
 
                 </form>
             </div>

@@ -79,6 +79,7 @@ const {
   contact,
   getContact,
 } = require("../controllers/userController");
+const { messagesPanel, messagesShow, messagesShowSend, messagesDelete } = require("../controllers/messages/messagesController");
 
 //User controller router
 
@@ -190,5 +191,11 @@ router.post(
   upload.single("logo"),
   settingsPost
 );
+
+// messages router 
+router.get("/admin/messages", isAuthenticated,getBreadcrumbs, messagesPanel);
+router.get("/admin/messages/:id/show",isAuthenticated,getBreadcrumbs,messagesShow);
+router.post("/admin/messages/:id/send",isAuthenticated,getBreadcrumbs,messagesShowSend)
+router.get("/admin/messages/:id/delete", isAuthenticated,getBreadcrumbs,messagesDelete)
 
 module.exports = router;

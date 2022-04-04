@@ -1,0 +1,61 @@
+<%- include('./partials/adminHeader'); %>
+
+
+    <div class="blogAll__content">
+        <%- include('./partials/adminAside'); %>
+
+        <% if (messages.length) { %>
+            <div class="latestContent">
+                <div class="latestPosts__wrapper">
+                   
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (messages) { %>
+                                    <% messages.forEach(message=> { %>
+                                        <tr>
+                                            <td>
+                                                <%=message.name %>
+                                            </td>
+                                            <td>
+                                                <%=message.email %>
+                                            </td>
+                                            <td>
+                                                <%=message.subject%>
+                                            </td>
+                                            <td>
+                                                <%=message.createDate%>
+                                            </td>
+        
+                                            <td>
+                                                <a class="editBtn altBtn" href="/admin/messages/<%=message._id%>/show">Show</a>
+                                                <a class="deleteBtn" href="/admin/messages/<%=message._id%>/delete">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                <% } %>
+                            </tbody>
+    
+                        </table>                    
+                </div>
+            </div>
+            <% } else { %>
+                <div class="emptyContent">
+                    <h2>Ooops!</h2>
+                    <img src="../../../assets/images/emptyContent.jpg" alt="">
+                    <p>You don't have any messages...</p>
+                </div>
+             <%}%>
+
+
+
+
+            <%- include('./partials/adminFooter'); %>

@@ -5,6 +5,7 @@ const postCollection = require("../../db").db().collection("posts");
 const blogCollection = require("../../db").db().collection("blogs");
 const categoryCollection = require("../../db").db().collection("categories");
 const serviceCollection = require("../../db").db().collection("services");
+const messagesCollection = require("../../db").db().collection("messages");
 
 module.exports = {
   register: (req, res) => {
@@ -25,11 +26,13 @@ module.exports = {
       blogs: await blogCollection.find().toArray(),
       categories: await categoryCollection.find().toArray(),
       services: await serviceCollection.find().toArray(),
+      messages: await messagesCollection.find().toArray(),
       breadcrumbs: req.breadcrumbs ? req.breadcrumbs : req.breadcrumbs[0],
       latestPosts: await postCollection.find({}).sort({$natural:-1}).limit(5).toArray(),
       lastCategory: await categoryCollection.find({}).sort({$natural:-1}).limit(1).toArray(),
       lastService: await serviceCollection.find({}).sort({$natural:-1}).limit(1).toArray(),
       latestBlogs: await blogCollection.find({}).sort({$natural:-1}).limit(5).toArray(),
+      latestMessages: await messagesCollection.find({}).sort({$natural:-1}).limit(1).toArray()
     });
   },
   createUser: (req, res) => {

@@ -15,7 +15,7 @@ a {
   text-decoration: none;
 }
 
-input, select {
+input, select, .mailReply {
   height: 30px;
   background-color: #f8f8f8;
   border: none;
@@ -26,6 +26,10 @@ input, select {
   -webkit-box-shadow: 0px 2px 2px 1px #ebebeb;
           box-shadow: 0px 2px 2px 1px #ebebeb;
   font-weight: 700;
+}
+
+.mailReply {
+  height: initial;
 }
 
 input[type="file"] {
@@ -47,6 +51,34 @@ input[type="file"]::-webkit-file-upload-button {
   color: #ffffff;
   cursor: pointer;
   font-weight: 700;
+}
+
+.saveBtn[type="submit"] {
+  height: 30px;
+  border: none;
+  border-radius: 7px;
+  -webkit-box-shadow: 0px 4px 10px 1px #fcacc4;
+          box-shadow: 0px 4px 10px 1px #fcacc4;
+  background: linear-gradient(342deg, #f12c8a 19%, #e70e75 54%, #be0d61 89%);
+  width: 120px;
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.emptyContent {
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px;
+  -webkit-box-shadow: 0px 4px 3px 1px #d4d4d4;
+          box-shadow: 0px 4px 3px 1px #d4d4d4;
+  margin-top: 25px;
+}
+
+.emptyContent img {
+  width: 40%;
 }
 
 .header {
@@ -547,6 +579,10 @@ input[type="file"]::-webkit-file-upload-button {
   }
 }
 
+.blogAll__content, .postAll__content {
+  margin-bottom: 50px;
+}
+
 .blogAll__content .addNewForm, .postAll__content .addNewForm {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -604,17 +640,10 @@ input[type="file"]::-webkit-file-upload-button {
   min-height: 600px;
 }
 
-.addContent__wrapper .saveBtn[type="submit"] {
-  height: 30px;
-  border: none;
-  border-radius: 7px;
-  -webkit-box-shadow: 0px 4px 10px 1px #fcacc4;
-          box-shadow: 0px 4px 10px 1px #fcacc4;
-  background: linear-gradient(342deg, #f12c8a 19%, #e70e75 54%, #be0d61 89%);
-  width: 120px;
-  color: #ffffff;
-  cursor: pointer;
-  margin-top: 20px;
-  font-weight: 700;
+.addContent__wrapper .settingsPreviewLogo {
+  border-radius: 50%;
+  width: 95px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=main-admin.css.map */

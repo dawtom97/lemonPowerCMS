@@ -1,10 +1,10 @@
 <%- include('./partials/adminHeader'); %>
 
 
-<div >
+<div  class="addContent__wrapper">
     <%- include('./partials/adminAside'); %>
 
-    <h2>Create Category</h2>
+    <h3>Create Category</h3>
 
     <div>
         <form action="/admin/categories/create" method="post">
@@ -15,10 +15,19 @@
                 </div>
             <% }) %>
 
-            <input type="text" placeholder="Name" name="name">
-            <input type="text" placeholder="slug" name="slug">
+            <div>
+                <label for="">Name</label>
+                <br>
+                <input type="text" placeholder="Name" name="name">
+            </div>
+            <div>
+                <label for="">Slug</label>
+                <br>
+                <input type="text" placeholder="slug" name="slug">
+            </div>
 
-            <button type="submit">Create</button>
+
+            <button class="saveBtn" type="submit">Create</button>
         </form>
 
      

@@ -9,6 +9,8 @@
             <button class="addNewBtn" type="submit">Add Post</button>
         </form>
 
+        <% if (posts.length) { %>
+                         
         <div class="latestContent">
             <div class="latestPosts__wrapper">
                 <table>
@@ -51,6 +53,13 @@
                 </table>
             </div>
         </div>
+        <% } else { %>
+            <div class="emptyContent">
+                <h2>Ooops!</h2>
+                <img src="../../../assets/images/emptyContent.jpg" alt="">
+                <p>You don't have any portfolio's...</p>
+            </div>
+         <%}%>
 
     
     </div>

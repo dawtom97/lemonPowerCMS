@@ -15,9 +15,10 @@
                     </p>
                 </div>
 
-                <p class="latest">Latest: <%=latestPosts[0].createDate.slice(4)%>
-                </p>
-
+                <% if (latestPosts[0]) { %>
+                    <p class="latest">Latest: <%=latestPosts[0].createDate.slice(4)%>
+                    </p>
+                    <% } %>
 
             </div>
 
@@ -31,8 +32,10 @@
                     </p>
                 </div>
 
-                <p class="latest">Latest: <%=latestBlogs[0].createDate.slice(4)%>
-                </p>
+                <% if (latestBlogs[0]) { %>
+                    <p class="latest">Latest: <%=latestBlogs[0].createDate.slice(4)%>
+                    </p>
+                    <% } %>
 
             </div>
 
@@ -46,8 +49,10 @@
                     </p>
                 </div>
 
-                <p class="latest">Latest: <%=lastCategory[0].name%>
-                </p>
+                <% if (lastCategory[0]) { %>
+                    <p class="latest">Latest: <%=lastCategory[0].name%>
+                    </p>
+                    <% } %>
 
 
             </div>
@@ -62,8 +67,10 @@
                     </p>
                 </div>
 
-                <p class="latest">Latest: <%=lastService[0].name%>
-                </p>
+                <% if (lastService[0]) { %>
+                    <p class="latest">Latest: <%=lastService[0].name%>
+                    </p>
+                    <% } %>
 
             </div>
             <div class="contentCounter__box">
@@ -72,12 +79,14 @@
                 </div>
                 <div class="boxText">
                     <h5>Messages</h5>
-                    <p>#7
+                    <p>#<%=messages.length%>
                     </p>
                 </div>
 
-                <p class="latest">Latest from: John@wp.pl
-                </p>
+                <% if (latestMessages[0]) { %>
+                    <p class="latest">Latest: <%=latestMessages[0].email%>
+                    </p>
+                    <% } %>
 
             </div>
         </div>
@@ -135,7 +144,8 @@
                             <tr class="card">
                                 <td>
                                     <% if (post.images.cover) { %>
-                                        <img class="altImg" src="/<%=post.images.cover[0].filename%>" alt="" width="50px" height="50px">
+                                        <img class="altImg" src="/<%=post.images.cover[0].filename%>" alt=""
+                                            width="50px" height="50px">
                                         <% } %>
                                 </td>
                                 <td>

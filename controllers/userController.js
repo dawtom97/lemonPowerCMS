@@ -9,6 +9,7 @@ const serviceCategoryCollection = require("../db")
 const aboutCollection = require("../db").db().collection("about");
 const dotenv = require("dotenv").config();
 const nodemailer = require("nodemailer");
+const MessageModel = require("../models/MessageModel");
 
 module.exports = {
   index: async (req, res) => {
@@ -86,10 +87,14 @@ module.exports = {
       },
     });
 
+    let message = new MessageModel(req.body);
+    message.add().then(()=>console.log("Wiadomość wysłana"))
+
+
     // Specify what the email will look like
     const mailOpts = {
       from: req.body.email, // This is ignored by Gmail
-      to: req.body.email,
+      to: process.env.GMAIL_USER,
       subject: req.body.subject,
       text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`,
     };

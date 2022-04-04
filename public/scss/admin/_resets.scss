@@ -15,7 +15,7 @@ a {
     text-decoration: none;
 }
 
-input,select {
+input,select, .mailReply {
   height: 30px;
   background-color: #f8f8f8;
   border: none;
@@ -26,6 +26,10 @@ input,select {
   box-shadow: 0px 2px 2px 1px rgb(235, 235, 235);
   font-weight: 700;
 }
+.mailReply {
+  height: initial;
+}
+
 input[type="file"] {
   background-color: transparent;
   box-shadow: none;
@@ -43,4 +47,26 @@ input[type="file"]::-webkit-file-upload-button {
   cursor: pointer;
   font-weight: 700;
 }
-
+.saveBtn[type="submit"] {
+  height: 30px;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0px 4px 10px 1px rgb(252, 172, 196);
+  background: $gradientPurple;
+  width: 120px;
+  color: $white;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+}
+.emptyContent {
+  background-color: $white;
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow:0px 4px 3px 1px rgb(212, 212, 212);
+  margin-top: 25px;
+  img {
+    width:40%
+  }
+}
