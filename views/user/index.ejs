@@ -1,6 +1,19 @@
 <%- include('./partials/header'); %>
 
     <!-- Container -->
+
+    <% if (slides.length) { %>
+        <div class="slider">
+             <% slides.forEach(slide => { %>
+                 <div class="slide" style="background-image:url('<% if(!slide.photo) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=slide.photo.filename%><%}%>')">
+                     <h2><%=slide.title%></h2>
+                     <p><%=slide.description%></p>
+                     <a href="<%=slide.link%>">Show more</a>
+                </div>
+             <% }) %>
+        </div>
+    <% } %>
+
     <main class="ms-container">
 
         <%- include ('./partials/container') %>

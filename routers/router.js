@@ -80,6 +80,7 @@ const {
   getContact,
 } = require("../controllers/userController");
 const { messagesPanel, messagesShow, messagesShowSend, messagesDelete } = require("../controllers/messages/messagesController");
+const { slidesPanel, slidesCreate, slidesCreatePost, slidesDelete, slideEditPhoto, slidesEditPhoto, slidesEditPhotoPost, slideEdit, slideEditPost } = require("../controllers/slider/sliderController");
 
 //User controller router
 
@@ -197,5 +198,21 @@ router.get("/admin/messages", isAuthenticated,getBreadcrumbs, messagesPanel);
 router.get("/admin/messages/:id/show",isAuthenticated,getBreadcrumbs,messagesShow);
 router.post("/admin/messages/:id/send",isAuthenticated,getBreadcrumbs,messagesShowSend)
 router.get("/admin/messages/:id/delete", isAuthenticated,getBreadcrumbs,messagesDelete)
+
+
+//slides router
+router.get("/admin/slides", isAuthenticated, getBreadcrumbs, slidesPanel);
+router.get("/admin/slides/create", isAuthenticated, getBreadcrumbs, slidesCreate);
+router.post("/admin/slides/create", isAuthenticated,upload.single("photo"),getBreadcrumbs, slidesCreatePost)
+router.get("/admin/slides/:id/delete",isAuthenticated,getBreadcrumbs, slidesDelete)
+router.get("/admin/slides/:id/slide-edit-photo", isAuthenticated,getBreadcrumbs, slidesEditPhoto);
+router.post("/admin/slides/:id/slide-edit-photo",
+  isAuthenticated,
+  getBreadcrumbs,
+  upload.single("photo"),
+  slidesEditPhotoPost
+);
+router.get("/admin/slides/:id/edit",isAuthenticated,getBreadcrumbs, slideEdit);
+router.post("/admin/slides/:id/edit",isAuthenticated,getBreadcrumbs,slideEditPost)
 
 module.exports = router;

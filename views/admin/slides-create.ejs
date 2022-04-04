@@ -1,0 +1,44 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="addContent__wrapper" >
+    <%- include('./partials/adminAside'); %>
+
+    <h3>Add Slide</h3>
+
+    <div>
+        <form action="/admin/slides/create" method="post" enctype="multipart/form-data">
+
+            <div>
+                <label for="">Image</label>
+                <input type="file" name="photo" id="">
+            </div>
+
+            <div>
+                <label for="">Title</label>
+                <br>
+                <input type="text" name="title">
+            </div>
+
+            <div>
+                <label for="">Description</label>
+                <br>
+                <input name="description" type="text">
+            </div>
+
+            <div>
+                <label for="">Link</label>
+                <br>
+                <input name="link" type="text">
+            </div>
+
+            <button class="saveBtn" type="submit">Add new slide</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

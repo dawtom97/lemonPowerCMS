@@ -1,0 +1,24 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="addContent__wrapper" >
+    <%- include('./partials/adminAside'); %>
+
+    <h3>Change slide image</h3>
+
+    <div>
+     
+        <form action="/admin/slides/<%=slide._id%>/slide-edit-photo" method="post" enctype="multipart/form-data">
+
+            <input type="file" name="photo">
+
+            <button class="saveBtn"  type="submit">Update photo</button>
+            
+        </form>
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

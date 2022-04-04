@@ -1,0 +1,39 @@
+<%- include('./partials/adminHeader'); %>
+
+
+<div class="addContent__wrapper" >
+    <%- include('./partials/adminAside'); %>
+
+    <h3>Edit Slide</h3>
+
+    <div>
+        <form action="/admin/slides/<%=slide._id%>/edit" method="post">
+
+            <div>
+                <label for="">Title</label>
+                <br>
+                <input type="text" name="title" value="<%=slide.title%>">
+            </div>
+
+            <div>
+                <label for="">Description</label>
+                <br>
+                <input name="description" type="text" value="<%=slide.description%>">
+            </div>
+
+            <div>
+                <label for="">Link</label>
+                <br>
+                <input name="link" type="text" value="<%=slide.link%>">
+            </div>
+
+            <button class="saveBtn" type="submit">Add new slide</button>
+        </form>
+
+     
+    </div>
+</div>
+
+
+
+<%- include('./partials/adminFooter'); %></div>

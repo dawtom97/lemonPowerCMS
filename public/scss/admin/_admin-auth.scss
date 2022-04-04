@@ -1,0 +1,83 @@
+.authContainer {
+    min-height: 100vh;
+    @include flex(column,center,center);
+    .authWrapper {
+        position: relative;
+        background-color: $white;
+        box-shadow:0px 4px 3px 1px rgb(212, 212, 212);
+        border-radius: 15px;
+        padding:20px;
+        width: 310px;
+        @include flex(column,center,center);
+
+  
+        .socialBox {
+            color:$white;
+            position: relative;
+            width: 100%;
+            top:-43px;
+            padding: 30px 10px;
+            background: $gradientPurple;
+            box-shadow: 0px 4px 10px 1px rgb(252, 172, 196);
+            border-radius: 15px;
+            @include flex(column,center,center,10px);
+            i {
+                color: $white;
+                font-size: 20px;
+                margin: 0px 15px;
+            }
+        }
+    }
+
+    .alert {
+        position: absolute;
+        margin-bottom: 40px;
+        color: red;
+        z-index: 99;
+        top:35%;
+        p {
+            font-size: 14px;
+        }
+    }
+    .authLink {
+        font-size: 14px;
+        margin:0px auto 10px;
+        a {
+            color: rgba(241,44,138,1);
+            font-weight: 700;
+        }
+    }
+    .editBtn {
+        padding:5px 20px;
+        @include text(14px,500,$white);
+        border-radius: 15px;
+        font-weight: 700;
+        border: none;
+        display: block;
+        margin: 15px auto;
+        width:140px;
+        height: 30px;
+        cursor: pointer;
+        background:$gradientBlack;
+        box-shadow: 0px 4px 10px 1px rgb(170, 170, 170);
+    }
+
+    .authBack {
+        position: fixed;
+        bottom: 25px;
+        right:25px;
+        display: block;
+        background-color: $white;
+        box-shadow:0px 4px 3px 1px rgb(212, 212, 212);
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+        @include flex (null,center,center);
+
+        i {
+            color: $black;
+            font-size: 30px;
+        }
+    }
+
+}

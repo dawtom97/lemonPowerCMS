@@ -1,0 +1,64 @@
+<%- include('./partials/adminHeader'); %>
+
+
+    <div class="blogAll__content">
+        <%- include('./partials/adminAside'); %>
+
+            <div>
+                <form class="addNewForm" action="/admin/slides/create/" method="get">
+                    <button class="addNewBtn" type="submit">Add Slide</button>
+                </form>
+
+           <% if (slides.length) { %>
+            
+                <div class="latestContent">
+                    <div class="latestPosts__wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                           
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% slides.forEach(slide => { %>
+                                    <tr>
+                                        <td>
+                                            <% if (slide.photo) { %>
+                                                <img src="/<%=slide.photo.filename%>" alt="" width="50px"
+                                                    height="50px">
+                                                <% } %>
+                                        </td>
+                                        <td><%=slide.title%></td>
+                                        <td><%=slide.description.slice(0,30)%>...</td>
+
+                                        <td>
+                                            <a class="coverBtn" href="/admin/slides/<%=slide._id%>/slide-edit-photo">Photo</a>
+                                            <a class="editBtn altBtn" href="/admin/slides/<%=slide._id%>/edit">Edit</a>
+                                            <a class="deleteBtn" href="/admin/slides/<%=slide._id%>/delete">Delete</a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                         
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+               <% } else { %>
+                    <div class="emptyContent">
+                        <h2>Ooops!</h2>
+                        <img src="../../../assets/images/emptyContent.jpg" alt="">
+                        <p>You don't have any slides...</p>
+                    </div>
+               <%}%>
+
+
+            </div>
+    </div>
+
+
+
+    <%- include('./partials/adminFooter'); %>

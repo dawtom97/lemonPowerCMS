@@ -43,6 +43,9 @@
       display: flex;
       align-items: center;
       @include text(14px, 400, $gray, null);
+      width:100%;
+      padding:7px 10px;
+      border-radius: 15px;
 
       i {
         font-size: 18px;
@@ -87,6 +90,7 @@
 @media (max-width: 768px) {
   .admin__aside {
     width: 60px;
+    padding: 10px;
     padding-top: 30px;
     left: 0;
     top:0;

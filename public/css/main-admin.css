@@ -81,6 +81,10 @@ input[type="file"]::-webkit-file-upload-button {
   width: 40%;
 }
 
+.activeRoute {
+  background: linear-gradient(342deg, #f12c8a 19%, #e70e75 54%, #be0d61 89%);
+}
+
 .header {
   margin-top: 8px;
   display: -webkit-box;
@@ -140,6 +144,32 @@ input[type="file"]::-webkit-file-upload-button {
 .header__breadcrumb p {
   font-size: 16px;
   font-weight: 700;
+}
+
+.confirmModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 4px 3px 1px #d4d4d4;
+          box-shadow: 0px 4px 3px 1px #d4d4d4;
+  z-index: 999;
+}
+
+.confirmShadow {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #1d1d1d;
+  opacity: 0.4;
+  z-index: 990;
 }
 
 .admin__aside {
@@ -231,6 +261,9 @@ input[type="file"]::-webkit-file-upload-button {
   font-size: 14px;
   font-weight: 400;
   color: #eeeeee;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 15px;
 }
 
 .admin__aside ul a i {
@@ -287,6 +320,7 @@ input[type="file"]::-webkit-file-upload-button {
 @media (max-width: 768px) {
   .admin__aside {
     width: 60px;
+    padding: 10px;
     padding-top: 30px;
     left: 0;
     top: 0;
@@ -645,5 +679,149 @@ input[type="file"]::-webkit-file-upload-button {
   width: 95px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.authContainer {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0px;
+}
+
+.authContainer .authWrapper {
+  position: relative;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 4px 3px 1px #d4d4d4;
+          box-shadow: 0px 4px 3px 1px #d4d4d4;
+  border-radius: 15px;
+  padding: 20px;
+  width: 310px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0px;
+}
+
+.authContainer .authWrapper .socialBox {
+  color: #ffffff;
+  position: relative;
+  width: 100%;
+  top: -43px;
+  padding: 30px 10px;
+  background: linear-gradient(342deg, #f12c8a 19%, #e70e75 54%, #be0d61 89%);
+  -webkit-box-shadow: 0px 4px 10px 1px #fcacc4;
+          box-shadow: 0px 4px 10px 1px #fcacc4;
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+}
+
+.authContainer .authWrapper .socialBox i {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0px 15px;
+}
+
+.authContainer .alert {
+  position: absolute;
+  margin-bottom: 40px;
+  color: red;
+  z-index: 99;
+  top: 35%;
+}
+
+.authContainer .alert p {
+  font-size: 14px;
+}
+
+.authContainer .authLink {
+  font-size: 14px;
+  margin: 0px auto 10px;
+}
+
+.authContainer .authLink a {
+  color: #f12c8a;
+  font-weight: 700;
+}
+
+.authContainer .editBtn {
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0px;
+  border-radius: 15px;
+  font-weight: 700;
+  border: none;
+  display: block;
+  margin: 15px auto;
+  width: 140px;
+  height: 30px;
+  cursor: pointer;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(19%, #191919), color-stop(54%, #303030), color-stop(89%, #474747));
+  background: linear-gradient(0deg, #191919 19%, #303030 54%, #474747 89%);
+  -webkit-box-shadow: 0px 4px 10px 1px #aaaaaa;
+          box-shadow: 0px 4px 10px 1px #aaaaaa;
+}
+
+.authContainer .authBack {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: block;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 4px 3px 1px #d4d4d4;
+          box-shadow: 0px 4px 3px 1px #d4d4d4;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0px;
+}
+
+.authContainer .authBack i {
+  color: #1d1d1d;
+  font-size: 30px;
 }
 /*# sourceMappingURL=main-admin.css.map */

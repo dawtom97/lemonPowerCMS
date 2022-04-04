@@ -2,6 +2,7 @@ const settingsCollection = require("../db").db().collection("settings");
 const userCollection = require("../db").db().collection("users");
 const postCollection = require("../db").db().collection("posts");
 const blogCollection = require("../db").db().collection("blogs");
+const slidesCollection = require("../db").db().collection("slides");
 const categoryCollection = require("../db").db().collection("categories");
 const serviceCategoryCollection = require("../db")
   .db()
@@ -16,6 +17,7 @@ module.exports = {
     res.render("user/index", {
       settings: await settingsCollection.findOne(),
       categories: await categoryCollection.find().toArray(),
+      slides: await slidesCollection.find().toArray(),
       posts: await postCollection
         .aggregate([
           {
