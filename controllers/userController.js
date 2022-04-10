@@ -9,6 +9,7 @@ const serviceCategoryCollection = require("../db")
   .collection("services-category");
 const aboutCollection = require("../db").db().collection("about");
 const dotenv = require("dotenv").config();
+const { ObjectId } = require("mongodb");
 const nodemailer = require("nodemailer");
 const MessageModel = require("../models/MessageModel");
 
@@ -30,14 +31,33 @@ module.exports = {
           },
         ])
         .toArray(),
+      blogs: await blogCollection.find({}).sort({$natural:-1}).limit(5).toArray(),
     });
   },
   blog: async (req, res) => {
+    let { page, size } = req.params;
+    if (!page) {
+      page = 1;
+    }
+    if (!size) {
+      size = 3;
+    }
+    const limit = Number(size);
+    const skip = (page - 1) * size;
+
+    console.log(req.params);
+
     res.render("user/blog", {
+      currentPage: Number(req.params.page),
+      currentCategory: req.params.category,
       settings: await settingsCollection.findOne(),
       categories: await categoryCollection.find().toArray(),
-      posts: await postCollection
+      slides: await slidesCollection.find().toArray(),
+      blogs: await blogCollection
         .aggregate([
+          {
+            $match: { categoryId: req.params.category !== 'all' ? ObjectId(req.params.category) : {$ne: req.params.category}}
+          },
           {
             $lookup: {
               from: "categories",
@@ -46,7 +66,16 @@ module.exports = {
               as: "category",
             },
           },
+          {
+            $sort: {
+              age : -1, 
+              createDate: 1
+            }
+          }
         ])
+    
+        .skip(skip)
+        .limit(limit)
         .toArray(),
     });
   },
@@ -54,6 +83,7 @@ module.exports = {
     res.render("user/about", {
       settings: await settingsCollection.findOne(),
       about: await aboutCollection.findOne(),
+      slides: await slidesCollection.find().toArray(),
       categories: await serviceCategoryCollection
         .aggregate([
           {
@@ -68,17 +98,16 @@ module.exports = {
         .toArray(),
     });
   },
-  getContact: async (req,res) => {
+  getContact: async (req, res) => {
     res.render("user/contact", {
       settings: await settingsCollection.findOne(),
       errors: req.flash("errors"),
-      success: req.flash("success")
+      success: req.flash("success"),
     });
   },
 
   contact: async (req, res) => {
-
-    const GMAIL_PASS = process.env.GMAIL_PASS
+    const GMAIL_PASS = process.env.GMAIL_PASS;
     const smtpTrans = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -90,8 +119,7 @@ module.exports = {
     });
 
     let message = new MessageModel(req.body);
-    message.add().then(()=>console.log("Wiadomość wysłana"))
-
+    message.add().then(() => console.log("Wiadomość wysłana"));
 
     // Specify what the email will look like
     const mailOpts = {
@@ -104,16 +132,16 @@ module.exports = {
     // Attempt to send the email
     smtpTrans.sendMail(mailOpts, (error, response) => {
       if (error) {
-        console.log(error)
-        req.flash('errors', 'someting went wrong');
-        req.session.save(()=>{
-          res.redirect('/contact')
-        })
+        console.log(error);
+        req.flash("errors", "someting went wrong");
+        req.session.save(() => {
+          res.redirect("/");
+        });
       } else {
-        req.flash("success", "Message send ")
-        req.session.save(()=>{
-          res.redirect('/contact')
-        })
+        req.flash("success", "Message send ");
+        req.session.save(() => {
+          res.redirect("/");
+        });
       }
     });
   },

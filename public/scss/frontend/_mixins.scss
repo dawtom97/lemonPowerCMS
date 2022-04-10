@@ -1,0 +1,48 @@
+@mixin flex($direction:row,$align:center,$justify:center,$gap:0px) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    gap:$gap;
+}
+
+@mixin text($size:10px,$weight:400,$color:'black',$spacing:0px) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+    letter-spacing: $spacing;
+}
+
+@mixin button($marginTop) {
+    display: inline-block;
+    margin-top: $marginTop;
+    color: #1d1d1d;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #1d1d1d;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+    font-weight: 700;
+}
+
+@mixin subtitle {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+
+    @media(max-width:768px) {
+        color: $white
+    }
+
+    &::before {
+        display: inline-block;
+        content: "";
+        border: 1px solid $black;
+        width: 80px;
+        margin: 0 10px 0 0;
+        transform: translateY(-4px);
+
+        @media(max-width:768px) {
+            border: 1px solid $white;
+        }
+    }
+}

@@ -17,6 +17,7 @@ class SettingsModel {
         phone: this.settings.phone,
         email: this.settings.email,
         footer: this.settings.footer,
+        blogLimit: this.settings.blogLimit
       };
     //check that item in collection exist
       console.log(this.logo)
@@ -36,6 +37,7 @@ class SettingsModel {
                 phone: this.settings.phone,
                 email: this.settings.email,
                 footer: this.settings.footer,
+                blogLimit: this.settings.blogLimit
               },
             }
           );

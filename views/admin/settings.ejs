@@ -82,6 +82,14 @@
                                     <% } %>
                                         >
                             </div>
+                            <div>
+                                <label for="">Blogs limit</label>
+                                <br>
+                                <input type="number" name="blogLimit" <% if(settings) { %>
+                                value="<%=settings.blogLimit %>"
+                                    <% } %>
+                                        >
+                            </div>
 
                             <button class="saveBtn" type="submit">Save Changes</button>
 

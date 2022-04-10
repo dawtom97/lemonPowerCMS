@@ -1,53 +1,80 @@
 <%- include('./partials/header'); %>
 
-    <!-- Container -->
 
     <% if (slides.length) { %>
-        <div class="slider">
-             <% slides.forEach(slide => { %>
-                 <div class="slide" style="background-image:url('<% if(!slide.photo) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=slide.photo.filename%><%}%>')">
-                     <h2><%=slide.title%></h2>
-                     <p><%=slide.description%></p>
-                     <a href="<%=slide.link%>">Show more</a>
-                </div>
-             <% }) %>
-        </div>
-    <% } %>
-
-    <main class="ms-container">
-
-        <%- include ('./partials/container') %>
-
-            <ul>
-                <%categories.forEach((category)=> { %>
-                    <li>
-                        <%=category.name%>
-                    </li>
-                    <% }) %>
-
-            </ul>
-
-            <div>
-                <%posts.forEach((post)=> { %>
-                    <div class="post">
-                        <a href="/post/<%=post._id%>">
-                            <article style="width:300px; min-height:200px; background-image:url('<% if(!post.images.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=post.images.cover[0].filename%><%}%>')">
-                                <div>
-                                    <span>
-                                        <% post.category.forEach((cat)=> { %>
-                                               <%=cat.name%>
-                                        <% }) %>
-                                    </span>
-                                    <h4><%=post.title%></h4>
-                                </div>
-
-                            </article>
-                        </a>
-                    </div>
-                    <% }) %>
+        <div class="page__slider">
+            <div class="slide__images">
+                <img class="img-1" src="/<%=slides[1].photo.filename%>" alt="<%=slides[1].title%>">
+                <img class="img-2" src="/<%=slides[2].photo.filename%>" alt="<%=slides[2].title%>">
+                <img class="img-3" src="/<%=slides[0].photo.filename%>" alt="<%=slides[0].title%>">
             </div>
 
+            <div class="slide__text">
+                <span class="subtitle">Gandhara Civilization</span>
+                <h2 class="title">
+                    <%=slides[0].title%>
+                </h2>
+                <p class="desc">
+                    <%=slides[0].description%>
+                </p>
+                <a class="more" href="/blog/all/1/<%=settings.blogLimit%>">Read more</a>
+            </div>
 
-    </main>
-    <!-- /Container -->
-    <%- include('./partials/footer'); %>
+            <div class="arrows">
+                <ul>
+                    <li><i class="bi bi-bullseye"></i></li>
+                    <li><i class="bi bi-arrow-down-right-circle-fill"></i></li>
+                </ul>
+                <div class="pages">
+                    <p><span>01</span>/04</p>
+                </div>
+            </div>
+
+        </div>
+        <% } %>
+
+            <main class="page__about">
+                <div class="about__img"></div>
+                <div class="about__info">
+                    <span class="info__subtitle">Gandhara History</span>
+                    <h2 class="info__title">Origin of the name</h2>
+                    <p class="info__desc">The name of Gandhara may have several meanings, but the most prominent theory
+                        relates its name to the word Qand/Gand which means "fragrance", and Har which means 'lands'.
+                        Hence in its simplest form, Gandhara is the 'Land of Fragrance'.</p>
+                    <a class="info__link" href="/about">Read More</a>
+                </div>
+            </main>
+
+
+
+            <main class="ms-container">
+
+
+                    <div class="page__latestBlogs" id="Blogs">
+                        <span class="blog__subtitle">Gandhara Tales</span>
+                        <h2 class="blog__title">Latest Posts</h2>
+                        <div class="blog__wrapper">
+                            <%blogs.forEach((blog)=> { %>
+                                <a href="/blog/<%=blog._id%>">
+                                    <article class="blog__card"
+                                        style="background-image:url('<% if(!blog.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=blog.cover.filename%><%}%>')">
+                                 
+                                            <span class="badge">
+                                                New
+                                            </span>
+                                            <h4>
+                                                <%=blog.title%>
+                                            </h4>
+                                  
+    
+                                    </article>
+                                </a>
+                                <% }) %>
+                        </div>
+                        <a class="blog__btn" href="/blog/all/1/<%=settings.blogLimit%>">show more</a>
+                    </div>
+
+
+            </main>
+            <!-- /Container -->
+            <%- include('./partials/footer'); %>

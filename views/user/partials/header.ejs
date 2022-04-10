@@ -1,64 +1,54 @@
 <!doctype html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="" />
-        <meta name="description" content="Honor - Creative Portfolio HTML Template" />
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" href="assets/images/ico/favicon-16x16.png"/>
-        <link rel="icon" type="image/png" href="assets/images/ico/favicon-32x32.png"/>
-        <link rel="icon" type="image/png" href="assets/images/ico/favicon-96x96.png"/>
-        <!-- Page Title -->
-        <title>Honor - Creative Portfolio HTML Template</title>
-        <!-- Plugins -->
-        <link rel="stylesheet" href="assets/css/plugins.min.css">
-        <!-- Custom css file -->
-        <link rel="stylesheet" href="assets/css/style.css">
-    </head>
-    <body>
-        <!-- <div class="ms-preloader"></div> -->
-        <!-- Wrapper -->
-            <div class="ms-main-container">
 
-                <!-- Header -->
-                    <header class="ms-header">
-                        <nav class="ms-nav">
-                            <div class="ms-logo">
-                                <a href="/" data-type="page-transition">
-                                    <% if(settings && settings.logo) { %>
-                                        <img width="50px" src="/<%=settings.logo.filename%>" alt="<%=settings.logo.filename%>">
-                                    <% } %>
-                                </a>
-                            </div>
-                            <!-- Mobile Menu Button -->
-                            <!-- Mobile Menu Button -->
-                            <ul class="ms-navbar">
-                                <li class="ms-nav-item link">
-                                    <a href="/">Home</a>
-                                    <ul class="ms-submenu">
-                                        <li class="ms-nav-item link">
-                                            <a href="/blog" data-type="page-transition">Works grid</a>
-                                        </li>
-                                        <li class="ms-nav-item link">
-                                            <a href="work-single-page.html" data-type="page-transition">Simple images</a>
-                                        </li>
-                                        <li class="ms-nav-item link">
-                                            <a href="gallery.html" data-type="page-transition">Gallery</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="ms-nav-item link">
-                                    <a href="/blog" data-type="page-transition">Blog</a>
-                                </li>
-                                <li class="ms-nav-item link">
-                                    <a href="/about" data-type="page-transition">About</a>
-                                </li>
-                                <li class="ms-nav-item link active">
-                                    <a href="/contact" data-type="page-transition">Contact</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </header>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="Honor - Creative Portfolio HTML Template" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Gandhara</title>
+
+</head>
+
+<body>
+    <div >
+
+        <div class="menuOverlay" id="MenuOverlay"></div>
+
+        <header class="page__header">
+            <div class="logo">
+                <a href="/">
+                    GANDHARA
+                </a>
+            </div>
+            <nav class="nav">
+
+                <div id="Hamburger" class="hamburger">
+                    <div class="bar bar-1"></div>
+                    <div class="bar bar-2"></div>
+                    <div class="bar bar-3"></div>
+                </div>
+
+                <ul id="MainMenu" class="nav__list">
+                    <li class="nav__link">
+                        <a href="/" data-type="page-transition">Homepage</a>
+                    </li>
+                    <li class="nav__link">
+                        <a href="/about" data-type="page-transition">About</a>
+                    </li>
+                    <li class="nav__link">
+                        <a href="/blog/all/1/<%=settings.blogLimit%>" data-type="page-transition">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+            <span class="border-bottom"></span>
+        </header>
+
+        <div style="background-image:url('/<%=slides[0].photo.filename%>')" class="overlay">
+            <div class="first"></div>
+            <div class="second"></div>
+            <div class="third"></div>
+        </div>

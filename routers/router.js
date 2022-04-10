@@ -85,7 +85,7 @@ const { slidesPanel, slidesCreate, slidesCreatePost, slidesDelete, slideEditPhot
 //User controller router
 
 router.get("/", index);
-router.get("/blog", blog);
+router.get("/blog/:category/:page/:size", blog);
 router.get("/about", about);
 
 router.get("/contact", getContact);

@@ -1,37 +1,28 @@
 <%- include('./partials/header'); %>
 
-                <!-- Container -->
-                    <main class="ms-container">
+    <!-- Container -->
+    <main class="about__wrapper">
 
-                        <h1><%=about.heading%></h1>
-                        <p><%=about.shortDesc%></p>
-
-                        <%- include ('./partials/container') %> 
-
-                        <div class="content">
-                            <%-about.editor%>
-                        </div>
-
-                        <div class="offers">
-                            <% categories.forEach((category) => { %>
-                                <ul>
-                                    <li>
-                                        <h5><%=category.name%></h5>
-                                    </li>
-                                    <% category.services.forEach((service) => { %>
-                                        <li><%=service.name%> </li>
-                                    <% })%>
-                                </ul>
-                            <% }) %>
-                        </div>
+        <div class="about__banner">
+            <span>Gandhara origin</span>
+            <h1 class="about__title">
+                <%=about.heading%>
+            </h1>
+            <p class="about__desc">
+                <%=about.shortDesc%>
+            </p>
+        </div>
 
 
-                        <!-- Back to top button -->
-                        <a href="#" class="back-top"><i class="material-icons">arrow_upward</i></a>
-                    </main>
-                <!-- /Container -->
+
+        <div class="content__wrapper">
+
+            <div class="content">
+                <%-about.editor%>
+            </div>
+        </div>
+
+    </main>
 
 
-                <%- include('./partials/footer'); %>
-
-            
+    <%- include('./partials/footer'); %>

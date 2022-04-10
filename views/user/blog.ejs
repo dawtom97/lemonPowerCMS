@@ -1,58 +1,67 @@
 <%- include('./partials/header'); %>
 
-                <!-- Container -->
-                    <main class="ms-container">
+    <!-- Container -->
+    <main class="blogPage">
 
-                        <%- include ('./partials/container') %> 
+        <ul class="blog__categories">
+            <li>
+                <a href="/blog/all/1/<%=settings.blogLimit%>">All</a>
+            </li>
+            <%categories.forEach((category)=> { %>
 
-                        <div class="post-wrapper">
-                             <% posts.forEach((post) => { %>
-                                <div class="post">
-                                    <a href="/post/<%=post._id%>">
-                                        <article style="width:300px; min-height:200px; background-image:url('<% if(!post.images.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=post.images.cover[0].filename%><%}%>')">
-                                            <div>
-                                                <span>
-                                                    <% post.category.forEach((cat)=> { %>
-                                                           <%=cat.name%>
-                                                    <% }) %>
-                                                </span>
-                                                <h4><%=post.title%></h4>
-                                            </div>
+                <li>
+                    <a href="/blog/<%=category._id%>/1/<%=settings.blogLimit%>">
+                        <%=category.name%>
+                    </a>
+                </li>
+                <% }) %>
+
+        </ul>
+
+
+
+        <div class="blogPage__wrapper">
+            <% blogs.forEach((blog)=> { %>
+                <a href="/blog/<%=blog._id%>">
+                    <article class="blogPage__card"
+                        style="background-image:url('<% if(!blog.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=blog.cover.filename%><%}%>')">
+
+                        <span>
+                            <% blog.category.forEach((cat)=> { %>
+                                <%=cat.name%>
+                                    <% }) %>
+                        </span>
+                        <h4>
+                            <%=blog.title%>
+                        </h4>
+
+
+
+                    </article>
+                </a>
+                <%})%>
+        </div>
+
+
+        <!-- Pagination -->
+        <div class="ms-section__block">
+            <ul class="ms-pagination">
+
             
-                                        </article>
-                                    </a>
-                                </div>
-                             <%})%>
-                        </div>
-                     
+            
+      
+            <a href="/blog/<%=currentCategory%>/<%=currentPage-1%>/<%=settings.blogLimit%>"> <button <%if(currentPage <= 1){%>disabled<%}%> >Previous</button></a>
+            <a href="/blog/<%=currentCategory%>/<%=currentPage+1%>/<%=settings.blogLimit%>"><button <%if(blogs.length !== Number(settings.blogLimit)){%>disabled<%}%> >Next</button></a>
+            </ul>
+           
+        </div>
+        <!-- /Pagination -->
 
-                                <!-- Pagination -->
-                                    <div class="ms-section__block">
-                                        <ul class="ms-pagination">
-                                            <li>
-                                                <a href="#">
-                                                    <span class="ms-btn__icon"><i class="material-icons">keyboard_arrow_left</i></span>
-                                                </a>
-                                            </li>
-                                            <li><a href="#" class="ms-btn active">1</a></li>
-                                            <li><a href="#" class="ms-btn">2</a></li>
-                                            <li><a href="#" class="ms-btn">3</a></li>
-                                            <li><a href="#" class="ms-btn">4</a></li>
-                                            <li><a href="#">
-                                                <span class="ms-btn__icon">
-                                                    <i class="material-icons">keyboard_arrow_right</i>
-                                                </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                <!-- /Pagination -->
+        </section>
+        <!-- /Works Grid -->
 
-                            </section>
-                        <!-- /Works Grid -->
-
-                        <!-- Back to top button -->
-                        <a href="#" class="back-top"><i class="material-icons">arrow_upward</i></a>
-                    </main>
-                <!-- /Container --> 
-                <%- include('./partials/footer'); %>
+        <!-- Back to top button -->
+        <a href="#" class="back-top"><i class="material-icons">arrow_upward</i></a>
+    </main>
+    <!-- /Container -->
+    <%- include('./partials/footer'); %>

@@ -1,17 +1,242 @@
-    <!-- Footer -->
-    <footer class="ms-footer">
-        <ul class="footer-socials">
-            <li><a href="#" class="ms-btn" target="_blank">dribbble</a></li>
-            <li><a href="#" class="ms-btn" target="_blank">behance</a></li>
-            <li><a href="<%=settings.instagram%>" class="ms-btn" target="_blank"><%=settings.instagram%></a></li>
-        </ul>
-        <div class="copyright">2018 © MadSparrow</div>
-    </footer>
+<!-- Footer -->
+<footer class="footer">
+    <h2 class="footer__title">Get in touch</h2>
+
+
+    <div class="footer__wrapper">
+
+       
+            <div class="info">
+                <h3>Don't be shy</h3>
+                <p>Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or
+                    opportunities to be part of your visions.</p>
+                <div class="box">
+                    <h4>Address:</h4>
+                    <p><%=settings.address1%></p>
+                    <p><%=settings.address2%></p>
+                </div>
+
+                <div class="box">
+                    <h4>Phone:</h4>
+                    <p><%=settings.phone%></p>
+                </div>
+
+                <div class="box">
+                    <h4>Email:</h4>
+                    <p><%=settings.email%></p>
+                </div>
+
+                    <div class="icons">
+
+
+                        <a href="<%=settings.facebook%>" target="_blank">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="<%=settings.instagram%>" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+            </div>
+
+
+
+     
+
+        <form id="validForm" action="/contact" method="post">
+                <div class="form-group col-md-6">
+                    <input type="text" name="name" class="form-control" id="cl" placeholder="Your name"
+                        autocomplete="off">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="email" name="email" class="form-control" placeholder="Email address"
+                        autocomplete="off">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject">
+                </div>
+                <div class="form-group col-md-12">
+                    <textarea name="message" rows="20" cols="5" class="form-control" id="message"
+                        placeholder="Your message"></textarea>
+                </div>
+                <div class="col-md-12">
+
+                    <input value="Send Message" type="submit" />
+
+                </div>
+        </form>
+    </div>
+
+    <p class="copyright"><%=settings.footer%></p>
+
+</footer>
 <!-- /Footer -->
 
 </div>
 
 <!-- Main js -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js" integrity="sha512-kVlGhj2qFy+KBCFuvjBJTGUMxbdqJKs4yK2jh0e0VPhWUPiPC87bzm4THmaaIee3Oj7j6sDpTTgm2EPPiESqBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/ScrollTrigger.min.js" integrity="sha512-mwNAdRfAgTFw7sywUyp8aLsHQN5qHd6PIX2K8zIbJLjGw0DyKriCK3sSs9IphpRqsNRvyRlP3HtbFtJIUofHJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    let aboutTl = gsap.timeline({
+        scrollTrigger: {
+           trigger:'.page__about',
+           start:'30% bottom',
+           end: "+=400",
+           scrub: 2,
+         //  markers: true,
+        }
+    })
+    aboutTl.to('.about__img', {
+        duration:3,
+        opacity:0.7,
+    })
+    aboutTl.from('.about__info', {
+        duration:3.5,
+        opacity:0,
+        x:1000,
+    })
+/////////////////////////////////////////////
+    let blogTl = gsap.timeline({
+       scrollTrigger: {
+           duration:1,
+           trigger:'.blog__wrapper',
+           start:window.innerWidth < 768 ? '30% bottom':'90% bottom',
+           end: "+=350",
+           scrub: 2.5,
+       }
+    })
+    const latestBlogs = document.querySelectorAll('.blog__card');
+    latestBlogs.forEach(blog => {
+        blogTl.from(blog, {
+        duration:0.4,
+        opacity:0,
+        y:-70
+    })
+    })
+//////////////////////////////////////////////
+    let blogDescTl = gsap.timeline({
+       scrollTrigger: {
+           trigger:'.page__latestBlogs',
+           start: window.innerWidth < 768 ? '30% bottom':'10% bottom',
+           end:window.innerWidth < 768 ? '+=100':"+=850",
+           scrub: true,
+       }
+    })
+        blogDescTl.from('.blog__subtitle',{
+        opacity:0,
+    })
+
+    blogDescTl.from('.blog__title',{
+        opacity:0,
+        x:-300
+    })
+
+/////////////////////////////////////////////////////////
+let footerTl = gsap.timeline({
+    scrollTrigger: {
+           trigger:'.footer',
+           start:'50% bottom',
+           end: "+=150",
+           scrub: 3,
+       }
+})
+footerTl.from('#validForm', {
+    y:200,
+    opacity:0
+})
+footerTl.from('.footer__title', {
+    opacity:0
+})
+
+
+    TweenMax.from('.logo', 1, {
+        delay: 1.4,
+        opacity: 0,
+        x: -20,
+        ease: Power4.easeInOut
+    }, 0.08)
+
+    TweenMax.from('.hamburger', 1, {
+        delay: 1.5,
+        opacity: 0,
+        x: -20,
+        ease: Expo.easeInOut
+    })
+    TweenMax.from('.border-bottom', 1, {
+        delay: 1.6,
+        left: '-100%',
+        ease: Expo.easeInOut
+    })
+    TweenMax.from('.subtitle', 1, {
+        delay: 2.8,
+        opacity: 0,
+        ease: Expo.easeInOut
+    })
+    TweenMax.to('.title', 1, {
+        delay: 2.2,
+        width: '100%',
+        ease: Expo.easeInOut
+    })
+    TweenMax.from('.desc', 1, {
+        delay: 2.8,
+        opacity: 0,
+        x: -20,
+        ease: Expo.easeInOut
+    })
+    TweenMax.from('.more', 1, {
+        delay: 2.8,
+        opacity: 0,
+        x: -20,
+        ease: Expo.easeInOut
+    })
+    TweenMax.to('.arrows', 1, {
+        delay: 3,
+        opacity: 0.4,
+        x: -20,
+        ease: Expo.easeInOut
+    })
+
+    TweenMax.to('.img-1', 1, {
+        delay: 2.2,
+        width: window.innerWidth > 768 ? '500px' : '100%',
+        ease: Expo.easeInOut
+    })
+    TweenMax.to('.img-2', 1, {
+        delay: 2.2,
+        width: '300px',
+        ease: Expo.easeInOut
+    })
+    TweenMax.to('.img-3', 1, {
+        delay: 2.2,
+        width: '300px',
+        ease: Expo.easeInOut
+    })
+
+
+    TweenMax.to('.first', 1.5, {
+        delay: .2,
+        left: '-100%',
+        height: 0,
+        ease: Expo.easeInOut
+    })
+    TweenMax.to('.second', 1.5, {
+        delay: .4,
+        left: '-100%',
+        height: 0,
+        ease: Expo.easeInOut
+    })
+    TweenMax.to('.third', 1.5, {
+        delay: .6,
+        left: '-100%',
+        height: 0,
+        ease: Expo.easeInOut
+    })
+</script>
+
+<script type="module" src="../../../assets/js/frontend/App.js"></script>
+
 </body>
+
 </html>
