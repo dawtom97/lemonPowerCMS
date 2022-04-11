@@ -233,6 +233,41 @@ footerTl.from('.footer__title', {
         height: 0,
         ease: Expo.easeInOut
     })
+
+
+    //about --------------------------------------------------------
+    TweenMax.from('#AboutContent',1,{
+        delay:1.5,
+        opacity:0,
+        y: 200
+    })
+    TweenMax.from('.about__desc',1,{
+        delay:2.5,
+        opacity:0,
+
+    })
+    TweenMax.from('.about__title',2,{
+        delay:1.5,
+        opacity:0,
+    })
+    TweenMax.from('.about__subtitle',3,{
+        delay:1.5,
+        opacity:0,
+        ease: Expo.easeInOut
+    })
+
+    // blog-------------------------------
+    TweenMax.from('.blogPage__wrapper',1,{
+        delay:2.5,
+        opacity:0,
+        y: 200
+    })
+    TweenMax.from('.blog__categories',1,{
+        delay:3.5,
+        opacity:0,
+        x: 200
+    })
+
 </script>
 
 <script type="module" src="../../../assets/js/frontend/App.js"></script>

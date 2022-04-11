@@ -1,32 +1,32 @@
-.about__wrapper {
+.blogDetails__wrapper {
     padding: 70px 0;
 
-    .about__banner {
+    .blog__banner {
         @include flex(row,center,flex-start);
         min-height: 490px;
         padding: 60px 0;
         margin-bottom: 30px;
         position: relative;
+        background-size: cover;
+        background-position: center;
         &:before {
             content: "";
             position: absolute;
             top:0;
             left:0;
             width:100%;
+            background-color: #000;
+            opacity: 0.6;
             height: 100%;
-            background-image:url('../../assets/images/aboutBanner.jpg');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            filter: brightness(50%);
+            z-index: 1;
         }
 
-        .about__inner {
+        .blog__inner {
             margin:0 auto;
             width:80%;
             z-index: 2;
         }
-        .about__title {
+        .blog__title {
             @include text (5rem,700,$white);
             text-transform: uppercase
         }
@@ -43,7 +43,7 @@
                 }
             }
         }
-        .about__desc {
+        .blog__desc {
             color: $white;
             margin-top: 20px;
             line-height: 2;

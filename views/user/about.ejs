@@ -4,20 +4,22 @@
     <main class="about__wrapper">
 
         <div class="about__banner">
-            <span>Gandhara origin</span>
-            <h1 class="about__title">
-                <%=about.heading%>
-            </h1>
-            <p class="about__desc">
-                <%=about.shortDesc%>
-            </p>
+            <div class="about__inner">
+                <span class="about__subtitle">Gandhara origin</span>
+                <h1 class="about__title">
+                    <%=about.heading%>
+                </h1>
+                <p class="about__desc">
+                    <%=about.shortDesc%>
+                </p>
+            </div>
         </div>
 
 
 
         <div class="content__wrapper">
 
-            <div class="content">
+            <div class="content" id="AboutContent">
                 <%-about.editor%>
             </div>
         </div>

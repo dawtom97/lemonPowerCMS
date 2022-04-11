@@ -3,65 +3,84 @@
     <!-- Container -->
     <main class="blogPage">
 
-        <ul class="blog__categories">
-            <li>
-                <a href="/blog/all/1/<%=settings.blogLimit%>">All</a>
-            </li>
-            <%categories.forEach((category)=> { %>
+        <div class="about__banner">
+            <div class="about__inner">
+                <span class="about__subtitle">Gandhara origin</span>
+                <h1 class="about__title">
+                    Blog
+                </h1>
+                <p class="about__desc">
+                    Gandhara art and religion, developed in what is now northwestern Pakistan and eastern Afghanistan between the 1st century BCE and the 7th century CE. The style, of Greco-Roman origin, seems to have flourished largely during the Kushan dynasty and was contemporaneous with an important but dissimilar school of Kushan art at Mathura.
+                </p>
+            </div>
+        </div>
 
-                <li>
+        <aside class="blog__categories">
+
+            <h3>Categories</h3>
+            <ul>
+                <a href="/blog/all/1/<%=settings.blogLimit%>">All</a>
+
+                <%categories.forEach((category)=> { %>
+    
+    
                     <a href="/blog/<%=category._id%>/1/<%=settings.blogLimit%>">
                         <%=category.name%>
                     </a>
-                </li>
-                <% }) %>
+    
+                    <% }) %>
+            </ul>
 
-        </ul>
-
-
+            </aside>
 
         <div class="blogPage__wrapper">
-            <% blogs.forEach((blog)=> { %>
-                <a href="/blog/<%=blog._id%>">
-                    <article class="blogPage__card"
-                        style="background-image:url('<% if(!blog.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=blog.cover.filename%><%}%>')">
 
-                        <span>
-                            <% blog.category.forEach((cat)=> { %>
-                                <%=cat.name%>
-                                    <% }) %>
-                        </span>
-                        <h4>
-                            <%=blog.title%>
-                        </h4>
+                <% blogs.forEach((blog)=> { %>
+                    <a href="/blog/<%=blog.categoryId%>/<%=blog._id%>">
+                        <article class="blogPage__card"
+                            style="background-image:url('<% if(!blog.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=blog.cover.filename%><%}%>')">
+    
+                            <span>
+                                <% blog.category.forEach((cat)=> { %>
+                                    <%=cat.name%>
+                                        <% }) %>
+                            </span>
 
+                            <div>
+                                <h4>
+                                    <%=blog.title%>
+                                </h4>
+    
+                                <p><%=blog.createDate.slice(4,15)%></p>
+                            </div>
 
-
-                    </article>
-                </a>
-                <%})%>
+    
+    
+    
+                        </article>
+                    </a>
+                    <%})%>
+        
         </div>
+
+
 
 
         <!-- Pagination -->
-        <div class="ms-section__block">
-            <ul class="ms-pagination">
+        <div class="blog__pagination">
+            <ul >
 
-            
-            
-      
-            <a href="/blog/<%=currentCategory%>/<%=currentPage-1%>/<%=settings.blogLimit%>"> <button <%if(currentPage <= 1){%>disabled<%}%> >Previous</button></a>
-            <a href="/blog/<%=currentCategory%>/<%=currentPage+1%>/<%=settings.blogLimit%>"><button <%if(blogs.length !== Number(settings.blogLimit)){%>disabled<%}%> >Next</button></a>
+
+
+
+                <a href="/blog/<%=currentCategory%>/<%=currentPage-1%>/<%=settings.blogLimit%>"> <button
+                        <%if(currentPage <=1){%>disabled<%}%> >Previous</button></a>
+                <a href="/blog/<%=currentCategory%>/<%=currentPage+1%>/<%=settings.blogLimit%>"><button
+                        <%if(blogs.length !==Number(settings.blogLimit)){%>disabled<%}%> >Next</button></a>
             </ul>
-           
+
         </div>
-        <!-- /Pagination -->
 
-        </section>
-        <!-- /Works Grid -->
-
-        <!-- Back to top button -->
-        <a href="#" class="back-top"><i class="material-icons">arrow_upward</i></a>
     </main>
-    <!-- /Container -->
+
     <%- include('./partials/footer'); %>

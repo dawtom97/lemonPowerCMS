@@ -79,6 +79,16 @@ module.exports = {
         .toArray(),
     });
   },
+  blogDetails: async (req,res) => {
+     res.render("user/blog-details", {
+      blog: await blogCollection.findOne({_id: ObjectId(req.params.id)}),
+      slides: await slidesCollection.find().toArray(),
+      categories: await categoryCollection.find().toArray(),
+      currentCategory: req.params.category,
+      settings: await settingsCollection.findOne(),
+     })
+  },
+
   about: async (req, res) => {
     res.render("user/about", {
       settings: await settingsCollection.findOne(),

@@ -1,0 +1,49 @@
+<%- include('./partials/header'); %>
+
+    <!-- Container -->
+    <main class="blogDetails__wrapper">
+
+        <div style="background-image:url('<% if(!blog.cover) {%>/assets/images/works/pl-md.jpg<%}else { %>/<%=blog.cover.filename%><%}%>')" class="blog__banner">
+            <div class="blog__inner">
+                <span class="blog__subtitle"><%=blog.tags%></span>
+                <h1 class="blog__title">
+                   <%=blog.title%>
+                </h1>
+                <p class="blog__desc">
+                    Created: <%=blog.createDate.slice(4,15)%>
+                </p>
+            </div>
+        </div>
+
+
+
+
+        <div class="content__wrapper">
+
+            <aside class="blog__categories">
+
+                <h3>Go to</h3>
+                <ul>
+                    <a href="/blog/all/1/<%=settings.blogLimit%>">All</a>
+    
+                    <%categories.forEach((category)=> { %>
+        
+        
+                        <a href="/blog/<%=category._id%>/1/<%=settings.blogLimit%>">
+                            <%=category.name%>
+                        </a>
+        
+                        <% }) %>
+                </ul>
+    
+                </aside>
+
+            <div class="content" id="AboutContent">
+                <%-blog.editor%>
+            </div>
+        </div>
+
+    </main>
+
+
+    <%- include('./partials/footer'); %>

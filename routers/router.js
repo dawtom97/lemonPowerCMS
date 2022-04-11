@@ -78,6 +78,7 @@ const {
   about,
   contact,
   getContact,
+  blogDetails,
 } = require("../controllers/userController");
 const { messagesPanel, messagesShow, messagesShowSend, messagesDelete } = require("../controllers/messages/messagesController");
 const { slidesPanel, slidesCreate, slidesCreatePost, slidesDelete, slideEditPhoto, slidesEditPhoto, slidesEditPhotoPost, slideEdit, slideEditPost } = require("../controllers/slider/sliderController");
@@ -86,6 +87,7 @@ const { slidesPanel, slidesCreate, slidesCreatePost, slidesDelete, slideEditPhot
 
 router.get("/", index);
 router.get("/blog/:category/:page/:size", blog);
+router.get("/blog/:category/:id", blogDetails)
 router.get("/about", about);
 
 router.get("/contact", getContact);
