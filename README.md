@@ -18,6 +18,12 @@ Database:
 - mongoDb
 
 How to start:
+- In the .env file type your mongodb address, email and email password (required for receiving and sending e-mails)
+- Create new admin user in domain/admin/register
+- Login to your dashboard domain/admin/login
+- Start create your own content and frontend layer
+
+![image](https://user-images.githubusercontent.com/76240710/162737057-5a44c3a4-efb4-49de-b62f-78cd9fd3a144.png)
 
 
 
