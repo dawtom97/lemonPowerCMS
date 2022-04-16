@@ -59,6 +59,7 @@ How to start:
 <h2>#Sample websites created with:</h2>
 
 https://gandharablog.herokuapp.com
+<br>
 https://edukids.herokuapp.com
 
 ![image](https://user-images.githubusercontent.com/76240710/162733521-4d906473-728d-42fb-8dae-de09ed9b2475.png)
